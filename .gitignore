@@ -1,3 +1,4 @@
 #build objects
 *.exe
 *.dll
+[Bb]in
