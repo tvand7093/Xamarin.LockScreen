@@ -5,9 +5,9 @@ using MonoTouch.Foundation;
 using MonoTouch.CoreAnimation;
 using MonoTouch.CoreGraphics;
 
-namespace Xamarin.LockScreen
+namespace Xamarin.LockScreen.Views
 {
-	public class LockScreenView : UIView
+	internal class LockScreenView : UIView
 	{
 		public UIFont EnterPasscodeLabelFont { get; private set; } 
 		public UIFont DetailLabelFont { get; private set; } 
@@ -41,7 +41,9 @@ namespace Xamarin.LockScreen
 		public UIView ContentView { get; set; }
 		public UIView BackgroundBlurringView { get; set; }
 
-		private readonly int[] buttonArray;
+
+		private float CorrectWidth { get { return ContentView.Bounds.Size.Width; }  }
+		private float CorrectHeight { get { return ContentView.Bounds.Size.Height; } }
 		private const float AnimationLength = 0.15f;
 		private bool IsIphone5 { get {return UIScreen.MainScreen.Bounds.Size.Height == 568; } }
 		private bool IsLessThanIOS6 
@@ -53,7 +55,7 @@ namespace Xamarin.LockScreen
 				return current <= ios6;
 			}
 		}
-		private UIButton[] ButtonArray {
+		internal UIButton[] ButtonArray {
 			get {
 				return new UIButton[] {
 					ButtonZero,
@@ -66,7 +68,7 @@ namespace Xamarin.LockScreen
 			}
 		}
 		private PinSelectionView[] digitArray;
-		private PinSelectionView[] DigitArray { 
+		public PinSelectionView[] DigitArray { 
 			get {
 				if(IsComplexPin)
 				{
@@ -107,10 +109,8 @@ namespace Xamarin.LockScreen
 			RequiresRotationCorrection = false;
 
 			EnterPasscodeLabel = StandardLabel ();
-			var path = NSBundle.MainBundle.PathForResource("en","lproj"); 
-			NSBundle languages = NSBundle.FromPath(path); 
 
-			EnterPasscodeLabel.Text = languages.LocalizedString("Enter Passcode", "Enter Passcode");
+			EnterPasscodeLabel.Text = "Enter Passcode".Translate ();
 			DetailLabel = StandardLabel ();
 			ButtonOne = new LockButton (RectangleF.Empty, 1, null);
 			ButtonTwo = new LockButton (RectangleF.Empty, 2, "ABC");
@@ -131,16 +131,16 @@ namespace Xamarin.LockScreen
 				buttonType = UIButtonType.Custom;
 			}
 			CancelButton = UIButton.FromType (buttonType);
-			CancelButton.SetTitle (languages.LocalizedString ("Cancel", ""), UIControlState.Normal);
+			CancelButton.SetTitle ("Cancel".Translate(), UIControlState.Normal);
 			CancelButton.HorizontalAlignment = UIControlContentHorizontalAlignment.Right;
 
 			DeleteButton = UIButton.FromType (buttonType);
-			DeleteButton.SetTitle (languages.LocalizedString ("Delete", ""), UIControlState.Normal);
+			DeleteButton.SetTitle ("Delete".Translate(), UIControlState.Normal);
 			DeleteButton.HorizontalAlignment = UIControlContentHorizontalAlignment.Right;
 			DeleteButton.Alpha = 0.0f;
 
 			OkButton = UIButton.FromType (buttonType);
-			OkButton.SetTitle (languages.LocalizedString ("OK", ""), UIControlState.Normal);
+			OkButton.SetTitle ("OK".Translate(), UIControlState.Normal);
 			OkButton.HorizontalAlignment = UIControlContentHorizontalAlignment.Left;
 			OkButton.Alpha = 0.0f;
 
@@ -256,47 +256,215 @@ namespace Xamarin.LockScreen
 		{
 			AnimateFailuteNotificationDirection (-35);
 		}
-		internal void ResetAnimated(bool animated)
+		public void ResetAnimated(bool animated)
 		{
-
+			foreach (var view in DigitArray) {
+				view.SetSelected (false, animated, null);
+			}
+			ShowCancelButtonAnimated (animated, null);
+			ShowOKButtonAnimated (false, animated, null);
 		}
 		internal void UpdatePinTextFieldWithLength(int length)
 		{
+			var attribs = new UIStringAttributes ();
+			attribs.KerningAdjustment = 4;
+			attribs.Font = UIFont.BoldSystemFontOfSize (18);
 
+			var padding = "";
+			for (int i = 0; i < length; i++) {
+				padding += " ";
+			}
+
+			if (!IsLessThanIOS6) {
+				NSAttributedString attrString = new NSAttributedString (padding, attribs);
+				UIView.Transition (DigitsTextField, AnimationLength,
+					UIViewAnimationOptions.TransitionCrossDissolve,
+					new NSAction (() => DigitsTextField.AttributedText = attrString),
+					null);
+			} else {
+				DigitsTextField.Text = padding;
+			}
 		}
 		private void SetDefaultStyles()
 		{
-
+			EnterPasscodeLabelFont = UIFont.SystemFontOfSize (18);
+			DetailLabelFont = UIFont.SystemFontOfSize (14);
+			LabelColor = UIColor.White;
 		}
 		private void PrepareAppearance()
 		{
+			EnterPasscodeLabel.TextColor = LabelColor;
+			EnterPasscodeLabel.Font = EnterPasscodeLabelFont;
 
+
+			DigitsTextField.TextColor = ((LockButton)ButtonZero).BorderColor;
+			DigitsTextField.Layer.BorderColor = ((LockButton)ButtonZero).BorderColor.CGColor;
+
+			UpdatePinTextFieldWithLength (0);
+			DetailLabel.TextColor = LabelColor;
+			DetailLabel.Font = DetailLabelFont;
+
+			CancelButton.SetTitleColor (LabelColor, UIControlState.Normal);
+			DeleteButton.SetTitleColor (LabelColor, UIControlState.Normal);
+			OkButton.SetTitleColor (LabelColor, UIControlState.Normal);
 		}
 		private void PerformLayout()
 		{
-
+			LayoutTitleArea ();
+			LayoutButtonArea ();
+			RequiresRotationCorrection = true;
 		}
 		private void LayoutTitleArea()
 		{
+			float top = IsLessThanIOS6 ? 15 : 65;
+			if (!IsIphone5)
+				top = IsLessThanIOS6 ? 5 : 20;
+			if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Pad)
+				top = IsLessThanIOS6 ? 30 : 80;
 
+			EnterPasscodeLabel.Frame = new RectangleF ((CorrectWidth / 2) - 100, top, 200, 23);
+			ContentView.AddSubview (EnterPasscodeLabel);
+			float pinSelectionTop = EnterPasscodeLabel.Frame.Y + 
+				EnterPasscodeLabel.Frame.Size.Height + 17.5f;
+
+			if (IsComplexPin) {
+				float textFieldWidth = 152;
+				DigitsTextField.Frame = new RectangleF ((CorrectWidth / 2) - (textFieldWidth / 2), 
+					pinSelectionTop - 7.5f,
+					textFieldWidth, 30);
+
+				ContentView.AddSubview (DigitsTextField);
+				OkButton.Frame = new RectangleF (
+					DigitsTextField.Frame.X + DigitsTextField.Frame.Size.Width + 10,
+					pinSelectionTop - 7.5f,
+					(CorrectWidth - DigitsTextField.Frame.Size.Width) / 2 - 10, 
+					30);
+				ContentView.AddSubview (OkButton);
+			} else {
+				float pinPadding = 25;
+				float pinRowWidth = (PinSelectionView.PinSelectionViewWidth * 4) + (pinPadding * 3);
+				float selectionViewLeft = (CorrectWidth / 2) - (pinRowWidth / 2);
+
+				foreach (var view in digitArray) {
+					SetupPinSelectionView (view, selectionViewLeft, pinSelectionTop);
+					selectionViewLeft += PinSelectionView.PinSelectionViewWidth + pinPadding;
+				}
+			}
+
+			DetailLabel.Frame = new RectangleF ((CorrectWidth / 2) - 100, pinSelectionTop + 30, 200, 23);
+			ContentView.AddSubview (DetailLabel);
 		}
 		private void LayoutButtonArea()
 		{
+			float horizontalButtonPadding = 20;
+			float verticalButtonPadding = 10;
 
+			float buttonRowWidth = (LockButton.ButtonWidth * 3) + (horizontalButtonPadding * 2);
+
+			float leftButtonLeft = (CorrectWidth / 2f) - (buttonRowWidth / 2f) + 0.5f;
+			float centerButtonLeft = leftButtonLeft + LockButton.ButtonWidth + horizontalButtonPadding;
+			float rightButtonLeft = centerButtonLeft + LockButton.ButtonWidth + horizontalButtonPadding;
+
+			float topRowTop = DetailLabel.Frame.Y + DetailLabel.Frame.Size.Height + 15;
+
+			if (!IsIphone5)
+				topRowTop = DetailLabel.Frame.Y + DetailLabel.Frame.Size.Height + 10;
+
+			float middleRowTop = topRowTop + LockButton.ButtonHeight + verticalButtonPadding;
+			float bottomRowTop = middleRowTop + LockButton.ButtonHeight + verticalButtonPadding;
+			float zeroRowTop = bottomRowTop + LockButton.ButtonHeight + verticalButtonPadding;
+
+			SetupButton (ButtonOne, leftButtonLeft, topRowTop);
+			SetupButton (ButtonTwo, centerButtonLeft, topRowTop);
+			SetupButton (ButtonThree, rightButtonLeft, topRowTop);
+
+			SetupButton (ButtonFour, leftButtonLeft, middleRowTop);
+			SetupButton (ButtonFive, centerButtonLeft, middleRowTop);
+			SetupButton (ButtonSix, rightButtonLeft, middleRowTop);
+
+			SetupButton (ButtonSeven, leftButtonLeft, bottomRowTop);
+			SetupButton (ButtonEight, centerButtonLeft, bottomRowTop);
+			SetupButton (ButtonNine, rightButtonLeft, bottomRowTop);
+
+			SetupButton (ButtonZero, centerButtonLeft, zeroRowTop);
+
+			RectangleF deleteCancelButtonFrame = new RectangleF (rightButtonLeft,
+				                                     zeroRowTop + LockButton.ButtonHeight + 25, 
+				                                     LockButton.ButtonWidth, 20);
+			if (!IsIphone5)
+				deleteCancelButtonFrame = new RectangleF (rightButtonLeft,
+					zeroRowTop + LockButton.ButtonHeight - 20,
+					LockButton.ButtonWidth, 20);
+
+			if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Pad)
+				deleteCancelButtonFrame = new RectangleF (rightButtonLeft,
+					zeroRowTop + (LockButton.ButtonHeight / 2 - 10),
+					LockButton.ButtonWidth, 20);
+
+			if (!CancelButtonDisabled) {
+				CancelButton.Frame = deleteCancelButtonFrame;
+				ContentView.AddSubview (CancelButton);
+			}
+
+			DeleteButton.Frame = deleteCancelButtonFrame;
+			ContentView.AddSubview (DeleteButton);
+
+		}
+
+		private void SetRoundedView (UIView roundedView, float newSize)
+		{
+			RectangleF newFrame = new RectangleF (roundedView.Frame.X,
+				                      roundedView.Frame.Y, newSize, newSize);
+			roundedView.Frame = newFrame;
+			roundedView.ClipsToBounds = true;
+			roundedView.Layer.CornerRadius = newSize / 2.0f;
 		}
 		private void SetupButton(UIButton button, float left, float top)
 		{
-
+			button.Frame = new RectangleF (left, top,
+				LockButton.ButtonWidth, LockButton.ButtonHeight);
+			ContentView.AddSubview (button);
+			SetRoundedView (button, 75);
 		}
 		private void SetupPinSelectionView(PinSelectionView selectionView, float left, float top)
 		{
+			selectionView.Frame = new RectangleF (left, top, LockButton.ButtonWidth, LockButton.ButtonHeight);
+			ContentView.AddSubview (selectionView);
+			SetRoundedView (selectionView, 15);
+		}
+		internal void SetupBackgroundView(UIView background){
+			BackgroundView.RemoveFromSuperview ();
+			BackgroundView = background;
+			if (BackgroundView == null)
+				BackgroundBlurringView.Hidden = true;
+			else {
+				if (BackgroundBlurringView == null) {
+					if (!IsLessThanIOS6) {
+						BackgroundBlurringView = new UINavigationBar (Bounds);
+						((UINavigationBar)BackgroundBlurringView).BarStyle = UIBarStyle.Black;
+					} else {
+						BackgroundBlurringView = new UIView (Bounds);
+						BackgroundBlurringView.BackgroundColor = UIColor.FromWhiteAlpha (0.0f, 0.75f);
+					}
+					BackgroundBlurringView.AutoresizingMask = UIViewAutoresizing.FlexibleWidth |
+						UIViewAutoresizing.FlexibleHeight;
 
+					InsertSubviewBelow (BackgroundBlurringView, ContentView); 
+				}
+				BackgroundBlurringView.Hidden = false;
+				BackgroundView.Frame = Bounds;
+				BackgroundView.AutoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight;
+				InsertSubviewBelow (BackgroundView, BackgroundBlurringView);
+			}
 		}
 
-		private float CorrectWidth { get { return ContentView.Bounds.Size.Width; }  }
-		private float CorrectHeight { get { return ContentView.Bounds.Size.Height; } }
-		private UILabel StandardLabel(){
-			return null;
+		private UILabel StandardLabel()
+		{
+			UILabel label = new UILabel (RectangleF.Empty);
+			label.TextColor = LabelColor;
+			label.BackgroundColor = UIColor.Clear;
+			label.TextAlignment = UITextAlignment.Center;
+			return label;
 		}
 
 		private void PerformAnimations(Action animations, bool animated, Action completion)
@@ -308,288 +476,12 @@ namespace Xamarin.LockScreen
 		}
 
 
-		public void LayoutSubviews(){
+		public override void LayoutSubviews(){
 			base.LayoutSubviews ();
 			PerformLayout ();
 			PrepareAppearance ();
 		}
 
-		/*
-		 * 
-		 * 
-		 * 
-		 * 
-		 * 
-
-
-- (void)resetAnimated:(BOOL)animated
-{
-    for (ABPinSelectionView *view in self.digitsArray)
-    {
-        [view setSelected:NO animated:animated completion:nil];
-    }
-    
-    [self showCancelButtonAnimated:animated completion:nil];
-	[self showOKButton:NO animated:animated completion:nil];
-	
-	[self updatePinTextfieldWithLength:0];
-}
-
-- (void)updatePinTextfieldWithLength:(NSUInteger)length
-{
-	if(NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_1)
-	{
-		NSAttributedString* digitsTextFieldAttrStr = [[NSAttributedString alloc] initWithString:[@"" stringByPaddingToLength:length withString:@" " startingAtIndex:0]
-																					 attributes:@{NSKernAttributeName: @4,
-																								  NSFontAttributeName: [UIFont boldSystemFontOfSize:18]}];
-		[UIView transitionWithView:self.digitsTextField duration:animationLength options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
-			self.digitsTextField.attributedText = digitsTextFieldAttrStr;
-		} completion:nil];
-	}
-	else
-	{
-		self.digitsTextField.text = [@"" stringByPaddingToLength:length withString:@" " startingAtIndex:0];
-	}
-}
-
-- (void)setBackgroundView:(UIView *)backgroundView
-{
-	[_backgroundView removeFromSuperview];
-	_backgroundView = backgroundView;
-
-	if(_backgroundView == nil)
-	{
-		[_backgroundBlurringView setHidden:YES];
-	}
-	else
-	{
-		if(_backgroundBlurringView == nil)
-		{
-			if(NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_1)
-			{
-				_backgroundBlurringView = [[UINavigationBar alloc] initWithFrame:self.bounds];
-				[(UINavigationBar*)_backgroundBlurringView setBarStyle: UIBarStyleBlack];
-			}
-			else
-			{
-				_backgroundBlurringView = [[UIView alloc] initWithFrame:self.bounds];
-				_backgroundBlurringView.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.75f];
-			}
-			_backgroundBlurringView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-			[self insertSubview:_backgroundBlurringView belowSubview:_contentView];
-		}
-		
-		[_backgroundBlurringView setHidden:NO];
-
-		[_backgroundView setFrame:self.bounds];
-		[_backgroundView setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight];
-		[self insertSubview:_backgroundView belowSubview:_backgroundBlurringView];
-	}
-}
-
-#pragma mark -
-#pragma mark - Helper Methods
-- (void)setDefaultStyles
-{
-    _enterPasscodeLabelFont = [UIFont systemFontOfSize:18];
-    _detailLabelFont = [UIFont systemFontOfSize:14];
-    
-    _labelColor = [UIColor whiteColor];
-}
-
-- (void)prepareAppearance
-{
-    self.enterPasscodeLabel.textColor = self.labelColor;
-    self.enterPasscodeLabel.font = self.enterPasscodeLabelFont;
-    
-	self.digitsTextField.textColor = [(ABPadButton*)self.buttonZero borderColor];
-	self.digitsTextField.layer.borderColor = [(ABPadButton*)self.buttonZero borderColor].CGColor;
-	
-	[self updatePinTextfieldWithLength:0];
-	
-    self.detailLabel.textColor = self.labelColor;
-    self.detailLabel.font = self.detailLabelFont;
-    
-    [self.cancelButton setTitleColor:self.labelColor forState:UIControlStateNormal];
-    [self.deleteButton setTitleColor:self.labelColor forState:UIControlStateNormal];
-	[self.okButton setTitleColor:self.labelColor forState:UIControlStateNormal];
-}
-
-#pragma mark -
-#pragma mark - Leyout Methods
-- (void)performLayout
-{
-    [self layoutTitleArea];
-    [self layoutButtonArea];
-    _requiresRotationCorrection = YES;
-}
-
-- (void)layoutTitleArea
-{
-    CGFloat top = NSFoundationVersionNumber <= NSFoundationVersionNumber_iOS_6_1 ? 15 : 65;
-	
-	if(!IS_IPHONE5)
-	{
-		top = NSFoundationVersionNumber <= NSFoundationVersionNumber_iOS_6_1 ? 5 : 20;
-	}
-	
-	if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-	{
-		top = NSFoundationVersionNumber <= NSFoundationVersionNumber_iOS_6_1 ? 30 : 80;;
-	}
-	
-    self.enterPasscodeLabel.frame = CGRectMake(([self correctWidth]/2) - 100, top, 200, 23);
-    [self.contentView addSubview:self.enterPasscodeLabel];
-	
-	CGFloat pinSelectionTop = self.enterPasscodeLabel.frame.origin.y + self.enterPasscodeLabel.frame.size.height + 17.5;
-
-	if(self.isComplexPin)
-	{
-		CGFloat textFieldWidth = 152;
-		_digitsTextField.frame = CGRectMake((self.correctWidth / 2) - (textFieldWidth / 2), pinSelectionTop - 7.5f, textFieldWidth, 30);
-		
-		[self.contentView addSubview:_digitsTextField];
-		
-		_okButton.frame = CGRectMake(_digitsTextField.frame.origin.x + _digitsTextField.frame.size.width + 10, pinSelectionTop - 7.5f, (self.correctWidth - _digitsTextField.frame.size.width) / 2 - 10, 30);
-		
-		[self.contentView addSubview:_okButton];
-	}
-	else
-	{
-		CGFloat pinPadding = 25;
-		CGFloat pinRowWidth = (ABPinSelectionViewWidth * 4) + (pinPadding * 3);
-		
-		CGFloat selectionViewLeft = ([self correctWidth]/2) - (pinRowWidth/2);
-		
-		for (ABPinSelectionView *view in self.digitsArray) {
-			[self setUpPinSelectionView:view  left:selectionViewLeft top:pinSelectionTop];
-			selectionViewLeft+=ABPinSelectionViewWidth + pinPadding;
-		}
-	}
-	
-    self.detailLabel.frame = CGRectMake(([self correctWidth]/2) - 100, pinSelectionTop + 30, 200, 23);
-    [self.contentView addSubview:self.detailLabel];
-}
-
-- (void)layoutButtonArea
-{
-    CGFloat horizontalButtonPadding = 20;
-    CGFloat verticalButtonPadding = 10;
-    
-    CGFloat buttonRowWidth = (ABPadButtonWidth * 3) + (horizontalButtonPadding * 2);
-    
-    CGFloat lefButtonLeft = ([self correctWidth]/2) - (buttonRowWidth/2) + 0.5;
-    CGFloat centerButtonLeft = lefButtonLeft + ABPadButtonWidth + horizontalButtonPadding;
-    CGFloat rightButtonLeft = centerButtonLeft + ABPadButtonWidth + horizontalButtonPadding;
-    
-    CGFloat topRowTop = self.detailLabel.frame.origin.y + self.detailLabel.frame.size.height + 15;
-    
-    if (!IS_IPHONE5) topRowTop = self.detailLabel.frame.origin.y + self.detailLabel.frame.size.height + 10;
-    
-    CGFloat middleRowTop = topRowTop + ABPadButtonHeight + verticalButtonPadding;
-    CGFloat bottomRowTop = middleRowTop + ABPadButtonHeight + verticalButtonPadding;
-    CGFloat zeroRowTop = bottomRowTop + ABPadButtonHeight + verticalButtonPadding;
-    
-    [self setUpButton:self.buttonOne left:lefButtonLeft top:topRowTop];
-    [self setUpButton:self.buttonTwo left:centerButtonLeft top:topRowTop];
-    [self setUpButton:self.buttonThree left:rightButtonLeft top:topRowTop];
-    
-    [self setUpButton:self.buttonFour left:lefButtonLeft top:middleRowTop];
-    [self setUpButton:self.buttonFive left:centerButtonLeft top:middleRowTop];
-    [self setUpButton:self.buttonSix left:rightButtonLeft top:middleRowTop];
-    
-    [self setUpButton:self.buttonSeven left:lefButtonLeft top:bottomRowTop];
-    [self setUpButton:self.buttonEight left:centerButtonLeft top:bottomRowTop];
-    [self setUpButton:self.buttonNine left:rightButtonLeft top:bottomRowTop];
-    
-    [self setUpButton:self.buttonZero left:centerButtonLeft top:zeroRowTop];
-    
-	CGRect deleteCancelButtonFrame = CGRectMake(rightButtonLeft, zeroRowTop + ABPadButtonHeight + 25, ABPadButtonWidth, 20);
-	if(!IS_IPHONE5)
-	{
-		//Bring it higher for small device screens
-		deleteCancelButtonFrame = CGRectMake(rightButtonLeft, zeroRowTop + ABPadButtonHeight - 20, ABPadButtonWidth, 20);
-	}
-	
-	if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-	{
-		//Center it with zero button
-		deleteCancelButtonFrame = CGRectMake(rightButtonLeft, zeroRowTop + (ABPadButtonHeight / 2 - 10), ABPadButtonWidth, 20);
-	}
-	
-    if (!self.cancelButtonDisabled)
-    {
-        self.cancelButton.frame = deleteCancelButtonFrame;
-        [self.contentView addSubview:self.cancelButton];
-    }
-    
-    self.deleteButton.frame = deleteCancelButtonFrame;
-    [self.contentView addSubview:self.deleteButton];
-}
-
-- (void)setUpButton:(UIButton *)button left:(CGFloat)left top:(CGFloat)top
-{
-    button.frame = CGRectMake(left, top, ABPadButtonWidth, ABPadButtonHeight);
-    [self.contentView addSubview:button];
-    [self setRoundedView:button toDiameter:75];
-}
-
-- (void)setUpPinSelectionView:(ABPinSelectionView *)selectionView left:(CGFloat)left top:(CGFloat)top
-{
-    selectionView.frame = CGRectMake(left,
-                                     top,
-                                     ABPinSelectionViewWidth,
-                                     ABPinSelectionViewHeight);
-    [self.contentView addSubview:selectionView];
-    [self setRoundedView:selectionView toDiameter:15];
-}
-
-- (void)performAnimations:(void (^)(void))animations animated:(BOOL)animated completion:(void (^)(BOOL finished))completion
-{
-    CGFloat length = (animated) ? animationLength : 0.0f;
-    
-    [UIView animateWithDuration:length delay:0.0f options:UIViewAnimationOptionCurveEaseIn
-                     animations:animations
-                     completion:completion];
-}
-
-#pragma mark -
-#pragma mark - Orientation height helpers
-- (CGFloat)correctWidth
-{
-	return _contentView.bounds.size.width;
-}
-
-- (CGFloat)correctHeight
-{
-    return _contentView.bounds.size.height;
-}
-
-#pragma mark -
-#pragma mark -  View Methods
-- (UILabel *)standardLabel
-{
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
-    label.textColor = _labelColor;
-    label.backgroundColor = [UIColor clearColor];
-    label.textAlignment = NSTextAlignmentCenter;
-    
-    return label;
-}
-
-- (void)setRoundedView:(UIView *)roundedView toDiameter:(CGFloat)newSize;
-{
-    CGRect newFrame = CGRectMake(roundedView.frame.origin.x, roundedView.frame.origin.y, newSize, newSize);
-    roundedView.frame = newFrame;
-    roundedView.clipsToBounds = YES;
-    roundedView.layer.cornerRadius = newSize / 2.0;
-}
-		 * 
-		 * 
-		 * 
-		 * 
-		 * 
-*/
 	}
 }
 

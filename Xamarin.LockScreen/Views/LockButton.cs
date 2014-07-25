@@ -6,9 +6,9 @@ using MonoTouch.Foundation;
 using MonoTouch.CoreText;
 using System.Collections.Generic;
 
-namespace Xamarin.LockScreen
+namespace Xamarin.LockScreen.Views
 {
-	public class LockButton : UIButton
+	internal class LockButton : UIButton
 	{
 		public UILabel NumberLabel { get; private set; }
 		public UILabel LettersLabel { get; private set; }
@@ -20,8 +20,8 @@ namespace Xamarin.LockScreen
 		public UIFont LetterLabelFont { get; private set; }
 		public UIView SelectedView { get; private set; }
 
-		private const float ButtonHeight = 75;
-		private const float ButtonWidth = 75;
+		public static float ButtonHeight  { get { return 75f; } }
+		public static float ButtonWidth { get { return 75; } }
 		private const float AnimationLength = 0.15f;
 	
 		public LockButton ()
