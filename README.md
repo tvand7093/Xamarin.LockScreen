@@ -15,6 +15,7 @@ To start using LockScreen, you only need a few steps.
 
 ```csharp
 using Xamarin.LockScreen;
+using Xamarin.LockScreen.Security;
 
 public class MyController : MainLockScreenController
 {
@@ -39,7 +40,8 @@ In most case you will want custom controll over how your lock mechanism works. I
 ```csharp
 using Xamarin.LockScreen.Security
 
-public class MyDelegate : LockHandler {
+public class MyDelegate : LockHandler 
+{
 
 	public override ValidatePin(BaseLockScreenController padLockScreenController, string pin)
 	{
@@ -49,7 +51,6 @@ public class MyDelegate : LockHandler {
 	//don't fret, there are more methods to override! 
 	//if you do not customize, the default LockHandler class
 	//will run it's course.
-
 }
 
 ```
