@@ -19,7 +19,22 @@ namespace Example
 			get;
 			set;
 		}
-		
+		public static UIStoryboard Storyboard = UIStoryboard.FromName ("Main", null);
+		public static ExampleViewController initialViewController;
+
+		public override bool FinishedLaunching (UIApplication app, NSDictionary options)
+		{
+			Window = new UIWindow (UIScreen.MainScreen.Bounds);
+
+			initialViewController = Storyboard.InstantiateInitialViewController () as ExampleViewController;
+
+			Window.RootViewController = initialViewController;
+
+			Window.MakeKeyAndVisible ();
+			return true;
+		}
+
+
 		// This method is invoked when the application is about to move from active to inactive state.
 		// OpenGL applications should use this method to pause.
 		public override void OnResignActivation (UIApplication application)
@@ -36,6 +51,7 @@ namespace Example
 		// This method is called as part of the transiton from background to active state.
 		public override void WillEnterForeground (UIApplication application)
 		{
+			Window.RootViewController = new ExampleViewController ();
 		}
 		
 		// This method is called when the application is about to terminate. Save data, if needed.

@@ -1,28 +1,26 @@
 ﻿using System;
 using MonoTouch.Foundation;
 using Xamarin.LockScreen.Interfaces;
+using MonoTouch.UIKit;
 
 namespace Xamarin.LockScreen
 {
 	[Register("LockScreenSetupController")]
-	public class LockScreenSetupController : BaseLockScreenController
+	internal class LockScreenSetupController : BaseLockScreenController
 	{
-		private ILockScreenSetupDelegate setupDelegate { get; set; }
+		private ILockScreenDelegate setupDelegate { get; set; }
 		private string EnteredPin { get; set; }
 
 		#region Constructors
 
 		public LockScreenSetupController (IntPtr handle) : base(handle) { }
 
-		public LockScreenSetupController (bool complexPin, ILockScreenSetupDelegate setupDelegate) 
-			: base(complexPin)
+		public LockScreenSetupController (ILockScreenDelegate setupDelegate) 
+			: base(false, setupDelegate)
 		{
 			this.setupDelegate = setupDelegate;
-			this.EnteredPin = null;
-		}
-		public LockScreenSetupController (ILockScreenSetupDelegate setupDelegate)
-		{
-			this.setupDelegate = setupDelegate;
+			this.EnteredPin = string.Empty;
+			this.lockScreenView.DetailLabel.Text = "Please enter new pin.";
 		}
 
 		#endregion
@@ -32,7 +30,7 @@ namespace Xamarin.LockScreen
 
 		protected override void ProcessPin ()
 		{
-			if (!String.IsNullOrEmpty(EnteredPin))
+			if (String.IsNullOrEmpty(EnteredPin))
 			{
 				StartPinConfirmation ();
 			}
@@ -52,14 +50,12 @@ namespace Xamarin.LockScreen
 		}
 		private void ValidateConfirmedPin()
 		{
-		
-			if (CurrentPin.Equals (EnteredPin)) {
+			if (EnteredPin.Equals (CurrentPin)) {
 				setupDelegate.PinSet (CurrentPin, this);
 			} else {
-				lockScreenView.UpdateDetailLabelWithString ("Pincode did not match.".Translate (), true, null);
+				lockScreenView.UpdateDetailLabelWithString ("Pincode mis-match. Try again.".Translate (), true, null);
 				lockScreenView.AnimateFailureNotification ();
 				lockScreenView.ResetAnimated (true);
-				EnteredPin = null;
 				CurrentPin = string.Empty;
 			}
 		}

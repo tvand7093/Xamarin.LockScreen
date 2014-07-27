@@ -6,7 +6,7 @@ using MonoTouch.Foundation;
 
 namespace Xamarin.LockScreen.Views
 {
-	internal class PinSelectionView : UIView
+	public class PinSelectionView : UIView
 	{
 		private const float _AnimationLength = 0.15f;
 		internal UIColor SelectedColor { get; set; } 
@@ -45,12 +45,14 @@ namespace Xamarin.LockScreen.Views
 			base.Draw (rect);
 			PrepareApperance ();
 		}
-		internal void SetSelected(bool selected, bool animated, Action completion){
+		internal async void SetSelected(bool selected, bool animated, Action completion){
 			float length = animated ? _AnimationLength : 0.0f;
 			float alpha = selected ? 1.0f : 0.0f;
-			UIView.Animate (length, 0, UIViewAnimationOptions.CurveEaseIn,
+			await UIView.AnimateAsync (length, new NSAction (() => SelectedView.Alpha = alpha));
+
+			/*UIView.Animate (length, 0, UIViewAnimationOptions.CurveEaseInOut,
 				new NSAction (() => SelectedView.Alpha = alpha),
-				new NSAction (completion));
+				new NSAction (completion));*/
 		}
 	}
 }

@@ -24,7 +24,6 @@ namespace Xamarin.LockScreen
 			this.isComplexPin = complexPin;
 			this.lockDelegate = lockDelegate;
 		}
-
 		#region View Controller Lifecycle Methods
 
 		public override void ViewDidLoad ()
@@ -158,9 +157,9 @@ namespace Xamarin.LockScreen
 				lockScreenView.DigitArray [currentlySelected].SetSelected (true, true, null);
 			}
 			if (CurrentPin.Length == 1) {
-				lockScreenView.ShowDeleteButtonAnimated (true, null);
+				lockScreenView.ShowDeleteButtonAnimated (true);
 				if (isComplexPin)
-					lockScreenView.ShowOKButtonAnimated (true, true, null);
+					lockScreenView.ShowOKButtonAnimated (true, true);
 			} else if (!isComplexPin && CurrentPin.Length == 4) {
 				lockScreenView.DigitArray [lockScreenView.DigitArray.Length - 1].SetSelected (true, true, null);
 				ProcessPin ();
@@ -171,7 +170,7 @@ namespace Xamarin.LockScreen
 		{
 			if (CurrentPin.Length == 0)
 				return;
-			CurrentPin = "";
+			CurrentPin = CurrentPin.Remove (CurrentPin.Length - 1, 1);
 			if (isComplexPin)
 				lockScreenView.UpdatePinTextFieldWithLength (CurrentPin.Length);
 			else {
@@ -179,9 +178,15 @@ namespace Xamarin.LockScreen
 				lockScreenView.DigitArray [pinToDelselect].SetSelected (false, true, null);
 			}
 			if (CurrentPin.Length == 0) {
-				lockScreenView.ShowCancelButtonAnimated (true, null);
-				lockScreenView.ShowOKButtonAnimated (false, true, null);
+				lockScreenView.ShowCancelButtonAnimated (true);
+				lockScreenView.ShowOKButtonAnimated (false, true);
 			}
+		}
+
+		public async void Show(UIViewController presentOver){
+			this.ModalPresentationStyle = UIModalPresentationStyle.FullScreen;
+			this.ModalTransitionStyle = UIModalTransitionStyle.CrossDissolve;
+			await presentOver.PresentViewControllerAsync (this, true);
 		}
 
 		#endregion

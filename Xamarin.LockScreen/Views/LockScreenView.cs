@@ -4,10 +4,11 @@ using System.Drawing;
 using MonoTouch.Foundation;
 using MonoTouch.CoreAnimation;
 using MonoTouch.CoreGraphics;
+using MonoTouch.AudioToolbox;
 
 namespace Xamarin.LockScreen.Views
 {
-	internal class LockScreenView : UIView
+	public class LockScreenView : UIView
 	{
 		public UIFont EnterPasscodeLabelFont { get; private set; } 
 		public UIFont DetailLabelFont { get; private set; } 
@@ -109,10 +110,10 @@ namespace Xamarin.LockScreen.Views
 			RequiresRotationCorrection = false;
 
 			EnterPasscodeLabel = StandardLabel ();
-
+			DigitsTextField = new UITextField (Rectangle.Empty);
 			EnterPasscodeLabel.Text = "Enter Passcode".Translate ();
 			DetailLabel = StandardLabel ();
-			ButtonOne = new LockButton (RectangleF.Empty, 1, null);
+			ButtonOne = new LockButton (RectangleF.Empty, 1, string.Empty);
 			ButtonTwo = new LockButton (RectangleF.Empty, 2, "ABC");
 			ButtonThree = new LockButton (RectangleF.Empty, 3, "DEF");
 
@@ -124,7 +125,7 @@ namespace Xamarin.LockScreen.Views
 			ButtonEight = new LockButton (RectangleF.Empty, 8, "TUV");
 			ButtonNine = new LockButton (RectangleF.Empty, 9, "WXYZ");
 
-			ButtonZero = new LockButton (RectangleF.Empty, 0, null);
+			ButtonZero = new LockButton (RectangleF.Empty, 0, string.Empty);
 
 			var buttonType = UIButtonType.System;
 			if (IsLessThanIOS6) {
@@ -147,7 +148,7 @@ namespace Xamarin.LockScreen.Views
 			IsComplexPin = false;
 		}
 
-		public LockScreenView (RectangleF frame, bool isComplexPin) : base(frame)
+		public LockScreenView (RectangleF frame, bool isComplexPin) : this(frame)
 		{
 			IsComplexPin = isComplexPin;
 			if (IsComplexPin) {
@@ -161,25 +162,25 @@ namespace Xamarin.LockScreen.Views
 			}
 		}
 
-		internal void ShowCancelButtonAnimated(bool animated, Action completion)
+		internal async void ShowCancelButtonAnimated(bool animated)
 		{
 			PerformAnimations (() => {
 				this.CancelButton.Alpha = 1.0f;
 				this.DeleteButton.Alpha = 0.0f;
-			}, animated, completion);
+			}, animated);
 		}
-		internal void ShowDeleteButtonAnimated(bool animated, Action completion)
+		internal void ShowDeleteButtonAnimated(bool animated)
 		{
 			PerformAnimations (() => {
 				this.CancelButton.Alpha = 0.0f;
 				this.DeleteButton.Alpha = 1.0f;
-			}, animated, completion);
+			}, animated);
 		}
-		internal void ShowOKButtonAnimated(bool show, bool animated, Action completion)
+		internal void ShowOKButtonAnimated(bool show, bool animated)
 		{
 			PerformAnimations (() => {
 				this.OkButton.Alpha = show ? 1.0f : 0.0f;
-			}, animated, completion);
+			}, animated);
 		}
 		internal void UpdateDetailLabelWithString(string newString, bool animated, Action completion)
 		{
@@ -213,10 +214,10 @@ namespace Xamarin.LockScreen.Views
 					button.UserInteractionEnabled = false;
 				}
 				CancelButton.Alpha = 0.0f;
-				foreach(PinSelectionView view in digitArray){
+				foreach(PinSelectionView view in DigitArray){
 					view.Alpha = 0.0f;
 				}
-			}, animated, completion);
+			}, animated);
 		}
 
 		internal void AnimateFailuteNotificationDirection(float direction)
@@ -240,7 +241,7 @@ namespace Xamarin.LockScreen.Views
 					{
 						DigitsTextField.Layer.AffineTransform = CGAffineTransform.MakeIdentity();
 					}
-					else{
+					else{					
 						foreach(PinSelectionView view in DigitArray){
 							view.Layer.AffineTransform = CGAffineTransform.MakeIdentity();
 						}
@@ -254,15 +255,18 @@ namespace Xamarin.LockScreen.Views
 		}
 		internal void AnimateFailureNotification() 
 		{
+			SystemSound.Vibrate.PlaySystemSound();
 			AnimateFailuteNotificationDirection (-35);
+			SystemSound.Vibrate.Close();
+
 		}
 		public void ResetAnimated(bool animated)
 		{
 			foreach (var view in DigitArray) {
 				view.SetSelected (false, animated, null);
 			}
-			ShowCancelButtonAnimated (animated, null);
-			ShowOKButtonAnimated (false, animated, null);
+			ShowCancelButtonAnimated (animated);
+			ShowOKButtonAnimated (false, animated);
 		}
 		internal void UpdatePinTextFieldWithLength(int length)
 		{
@@ -296,10 +300,8 @@ namespace Xamarin.LockScreen.Views
 			EnterPasscodeLabel.TextColor = LabelColor;
 			EnterPasscodeLabel.Font = EnterPasscodeLabelFont;
 
-
 			DigitsTextField.TextColor = ((LockButton)ButtonZero).BorderColor;
 			DigitsTextField.Layer.BorderColor = ((LockButton)ButtonZero).BorderColor.CGColor;
-
 			UpdatePinTextFieldWithLength (0);
 			DetailLabel.TextColor = LabelColor;
 			DetailLabel.Font = DetailLabelFont;
@@ -345,7 +347,7 @@ namespace Xamarin.LockScreen.Views
 				float pinRowWidth = (PinSelectionView.PinSelectionViewWidth * 4) + (pinPadding * 3);
 				float selectionViewLeft = (CorrectWidth / 2) - (pinRowWidth / 2);
 
-				foreach (var view in digitArray) {
+				foreach (var view in DigitArray) {
 					SetupPinSelectionView (view, selectionViewLeft, pinSelectionTop);
 					selectionViewLeft += PinSelectionView.PinSelectionViewWidth + pinPadding;
 				}
@@ -467,12 +469,11 @@ namespace Xamarin.LockScreen.Views
 			return label;
 		}
 
-		private void PerformAnimations(Action animations, bool animated, Action completion)
+		private async void PerformAnimations(Action animations, bool animated)
 		{
 			float length = animated ? AnimationLength : 0.0f;
 
-			UIView.Animate(length, 0.0f, UIViewAnimationOptions.CurveEaseIn,
-				new NSAction(animations), new NSAction (completion));
+			await UIView.AnimateAsync (length, new NSAction (animations));
 		}
 
 

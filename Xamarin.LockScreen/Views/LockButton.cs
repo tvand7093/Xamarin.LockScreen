@@ -49,7 +49,7 @@ namespace Xamarin.LockScreen.Views
 			SelectedView.BackgroundColor = SelectedColor;
 
 		}
-		public void LayoutSubview(){
+		public override void LayoutSubviews(){
 			base.LayoutSubviews ();
 			PrepareAppearance ();
 			PerformLayout ();

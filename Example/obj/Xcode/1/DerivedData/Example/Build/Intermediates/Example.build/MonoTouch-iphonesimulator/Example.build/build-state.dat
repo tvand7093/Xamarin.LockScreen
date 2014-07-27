@@ -1,0 +1,54 @@
+TExample
+v7
+r1
+cCheck dependencies
+
+CBuild AST from /Users/tylervanderhoef/Documents/Github/Xamarin.LockScreen/Example/obj/Xcode/1/AppDelegate.m
+r0
+
+CBuild AST from /Users/tylervanderhoef/Documents/Github/Xamarin.LockScreen/Example/obj/Xcode/1/ExampleViewController.m
+r0
+
+CBuild AST from /Users/tylervanderhoef/Documents/Github/Xamarin.LockScreen/Example/obj/Xcode/1/LockScreenController.m
+r0
+
+CBuild AST from /Users/tylervanderhoef/Documents/Github/Xamarin.LockScreen/Example/obj/Xcode/1/LockScreenSetupController.m
+r0
+
+CCheck dependencies
+r0
+lSLF07#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies18"Check dependencies9fc87f2d5b84b941^81cd952d5b84b941^-725"warning: no rule to process file '/Users/tylervanderhoef/Documents/Github/Xamarin.LockScreen/Example/obj/Xcode/1/AppDelegate.h' of type sourcecode.c.h for architecture i386warning: no rule to process file '/Users/tylervanderhoef/Documents/Github/Xamarin.LockScreen/Example/obj/Xcode/1/ExampleViewController.h' of type sourcecode.c.h for architecture i386warning: no rule to process file '/Users/tylervanderhoef/Documents/Github/Xamarin.LockScreen/Example/obj/Xcode/1/LockScreenController.h' of type sourcecode.c.h for architecture i386warning: no rule to process file '/Users/tylervanderhoef/Documents/Github/Xamarin.LockScreen/Example/obj/Xcode/1/LockScreenSetupController.h' of type sourcecode.c.h for architecture i3864(21%IDEActivityLogMessage2@172"Warning: no rule to process file '/Users/tylervanderhoef/Documents/Github/Xamarin.LockScreen/Example/obj/Xcode/1/AppDelegate.h' of type sourcecode.c.h for architecture i386-428104493#18446744073709551615#0#-1#27"com.apple.dt.IDE.LogMessage-27"Dependency Analysis Warning--2@182"Warning: no rule to process file '/Users/tylervanderhoef/Documents/Github/Xamarin.LockScreen/Example/obj/Xcode/1/ExampleViewController.h' of type sourcecode.c.h for architecture i386-428104493#18446744073709551615#0#-1#27"com.apple.dt.IDE.LogMessage-27"Dependency Analysis Warning--2@181"Warning: no rule to process file '/Users/tylervanderhoef/Documents/Github/Xamarin.LockScreen/Example/obj/Xcode/1/LockScreenController.h' of type sourcecode.c.h for architecture i386-428104493#18446744073709551615#0#-1#27"com.apple.dt.IDE.LogMessage-27"Dependency Analysis Warning--2@186"Warning: no rule to process file '/Users/tylervanderhoef/Documents/Github/Xamarin.LockScreen/Example/obj/Xcode/1/LockScreenSetupController.h' of type sourcecode.c.h for architecture i386-428104493#18446744073709551615#0#-1#27"com.apple.dt.IDE.LogMessage-27"Dependency Analysis Warning--0#1#1#--18"Check dependencies36"8C61769C-A32A-4D33-93C2-8E80FA8F006F-
+
+CCompileC DerivedData/Example/Build/Intermediates/Example.build/MonoTouch-iphonesimulator/Example.build/Objects-normal/i386/AppDelegate-CF2588BFBDFFF4F5.o /Users/tylervanderhoef/Documents/Github/Xamarin.LockScreen/Example/obj/Xcode/1/AppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CCompileC DerivedData/Example/Build/Intermediates/Example.build/MonoTouch-iphonesimulator/Example.build/Objects-normal/i386/ExampleViewController-5864E855FC5363D3.o /Users/tylervanderhoef/Documents/Github/Xamarin.LockScreen/Example/obj/Xcode/1/ExampleViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CCompileC DerivedData/Example/Build/Intermediates/Example.build/MonoTouch-iphonesimulator/Example.build/Objects-normal/i386/LockScreenController-98ADE647D5FC50DE.o /Users/tylervanderhoef/Documents/Github/Xamarin.LockScreen/Example/obj/Xcode/1/LockScreenController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CCompileC DerivedData/Example/Build/Intermediates/Example.build/MonoTouch-iphonesimulator/Example.build/Objects-normal/i386/LockScreenSetupController-669AF61E85D759EA.o /Users/tylervanderhoef/Documents/Github/Xamarin.LockScreen/Example/obj/Xcode/1/LockScreenSetupController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CCompileStoryboard /Users/tylervanderhoef/Documents/Github/Xamarin.LockScreen/Example/obj/Xcode/1/Main.storyboard
+r0
+
+CCopyPlistFile /Users/tylervanderhoef/Documents/Github/Xamarin.LockScreen/Example/obj/Xcode/1/DerivedData/Example/Build/Products/MonoTouch-iphonesimulator/Example.app/Entitlements.plist Entitlements.plist
+r0
+
+CCopyPlistFile /Users/tylervanderhoef/Documents/Github/Xamarin.LockScreen/Example/obj/Xcode/1/DerivedData/Example/Build/Products/MonoTouch-iphonesimulator/Example.app/Info.plist Info.plist
+r0
+
+CCpResource Default-568h@2x.png DerivedData/Example/Build/Products/MonoTouch-iphonesimulator/Example.app/Default-568h@2x.png
+r0
+
+CGenerateDSYMFile /Users/tylervanderhoef/Documents/Github/Xamarin.LockScreen/Example/obj/Xcode/1/DerivedData/Example/Build/Products/MonoTouch-iphonesimulator/Example.app.dSYM /Users/tylervanderhoef/Documents/Github/Xamarin.LockScreen/Example/obj/Xcode/1/DerivedData/Example/Build/Products/MonoTouch-iphonesimulator/Example.app/Example
+r0
+
+CLd /Users/tylervanderhoef/Documents/Github/Xamarin.LockScreen/Example/obj/Xcode/1/DerivedData/Example/Build/Products/MonoTouch-iphonesimulator/Example.app/Example normal i386
+r0
+
+CTouch /Users/tylervanderhoef/Documents/Github/Xamarin.LockScreen/Example/obj/Xcode/1/DerivedData/Example/Build/Products/MonoTouch-iphonesimulator/Example.app
+r0
+

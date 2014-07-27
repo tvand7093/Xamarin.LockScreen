@@ -2,11 +2,12 @@
 using Xamarin.LockScreen.Views;
 using Xamarin.LockScreen.Interfaces;
 using MonoTouch.Foundation;
+using MonoTouch.UIKit;
 
 namespace Xamarin.LockScreen
 {
 	[Register("LockScreenController")]
-	public class LockScreenController : BaseLockScreenController
+	internal class LockScreenController : BaseLockScreenController
 	{
 		private LockScreenView lockScreen { get { return (LockScreenView)View; } }
 		private int RemainingAttempts { get; set; }
@@ -27,8 +28,8 @@ namespace Xamarin.LockScreen
 		}
 
 		public LockScreenController (IntPtr handle) : base(handle) { }
-		public LockScreenController(bool complexPin, ILockScreenDelegate lockDelegate)
-			: base(complexPin, lockDelegate)
+		public LockScreenController(ILockScreenDelegate lockDelegate)
+			: base(false, lockDelegate)
 		{
 			this.lockDelegate = lockDelegate;
 			RemainingAttempts = -1;
@@ -37,9 +38,9 @@ namespace Xamarin.LockScreen
 			SingleAttempLeftString = "attmpt left".Translate ();
 		}
 
-		internal void UnlockScreen()
+		public void UnlockScreen()
 		{
-			lockDelegate.UnlockWasCancelledForPadLockScreen (this);
+			lockDelegate.UnlockWasSuccessfulForPadLockScreenViewController (this);
 		}
 		internal void ProcessFailure()
 		{
@@ -49,16 +50,15 @@ namespace Xamarin.LockScreen
 			lockScreen.AnimateFailureNotification ();
 			if (RemainingAttempts > 1) {
 				lockScreen.UpdateDetailLabelWithString (string.Format ("{0} {1}",
-					RemainingAttempts, PluralAttemptsLeft), true, null);
+					RemainingAttempts, PluralAttemptsLeftString), true, null);
 			} else if (RemainingAttempts == 1) {
 				lockScreen.UpdateDetailLabelWithString (string.Format ("{0} {1}",
 					RemainingAttempts, SingleAttempLeftString), true, null);
 			} else if (RemainingAttempts == 0) {
 				LockScreen ();
 			}
-
 			lockDelegate.UnlockWasUnsuccessful (CurrentPin, TotalAttempts, this);
-
+			CurrentPin = string.Empty;
 		}
 		public void LockScreen()
 		{
@@ -66,7 +66,7 @@ namespace Xamarin.LockScreen
 			lockScreen.LockViewAnimated (true, null);
 			lockDelegate.AttemptsExpiredForPadLockScreenViewController (this);
 		}
-		internal void SetAllowedAttempts(int allowedAttempts)
+		public void SetAllowedAttempts(int allowedAttempts)
 		{
 			TotalAttempts = 0;
 			RemainingAttempts = allowedAttempts;

@@ -1,14 +1,16 @@
 # Version: 7.9.1.90 (0ba5e04)
-# [first argument, ignore] # /Users/tylervanderhoef/Projects/Xamarin.LockScreen/Example/bin/iPhoneSimulator/Debug/mtouch.exe
+# [first argument, ignore] # /Users/tylervanderhoef/Documents/Github/Xamarin.LockScreen/Example/bin/iPhoneSimulator/Debug/mtouch.exe
 /Developer/MonoTouch/usr/bin/mtouch \
 	-sdkroot \
 	/Applications/Xcode6-Beta3.app/Contents/Developer \
 	--cache \
-	/Users/tylervanderhoef/Projects/Xamarin.LockScreen/Example/obj/iPhoneSimulator/Debug/mtouch-cache \
+	/Users/tylervanderhoef/Documents/Github/Xamarin.LockScreen/Example/obj/iPhoneSimulator/Debug/mtouch-cache \
 	--nomanifest \
 	--nosign \
 	-sim \
-	/Users/tylervanderhoef/Projects/Xamarin.LockScreen/Example/bin/iPhoneSimulator/Debug/Example.app \
+	/Users/tylervanderhoef/Documents/Github/Xamarin.LockScreen/Example/bin/iPhoneSimulator/Debug/Example.app \
+	-r \
+	/Users/tylervanderhoef/Documents/Github/Xamarin.LockScreen/Xamarin.LockScreen/bin/Debug/Xamarin.LockScreen.dll \
 	-r \
 	/Developer/MonoTouch/usr/lib/mono/2.1/System.dll \
 	-r \
@@ -24,4 +26,4 @@
 	-targetver \
 	7.0 \
 	--abi=i386 \
-	/Users/tylervanderhoef/Projects/Xamarin.LockScreen/Example/bin/iPhoneSimulator/Debug/Example.exe \
+	/Users/tylervanderhoef/Documents/Github/Xamarin.LockScreen/Example/bin/iPhoneSimulator/Debug/Example.exe \

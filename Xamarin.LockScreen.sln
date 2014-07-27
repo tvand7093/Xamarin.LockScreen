@@ -51,6 +51,6 @@ Global
 		{E08EE06B-C20B-416E-B3DC-5859966717BD}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = Xamarin.LockScreen\Xamarin.LockScreen.csproj
+		StartupItem = Example\Example.csproj
 	EndGlobalSection
 EndGlobal

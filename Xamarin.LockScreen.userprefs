@@ -1,17 +1,16 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Xamarin.LockScreen/ViewControllers/LockScreenController.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.Tyler Vanderhoef’s iPhone" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Xamarin.LockScreen/ViewControllers/MainLockScreenController.cs">
     <Files>
-      <File FileName="Xamarin.LockScreen/ViewControllers/LockScreenController.cs" Line="8" Column="8" />
-      <File FileName="Xamarin.LockScreen/Helpers/ILockScreenDelegate.cs" Line="39" Column="39" />
-      <File FileName="Xamarin.LockScreen/ViewControllers/BaseLockScreenController.cs" Line="8" Column="8" />
-      <File FileName="Xamarin.LockScreen/Views/LockScreenView.cs" Line="3" Column="3" />
-      <File FileName="Xamarin.LockScreen/ViewControllers/LockScreenSetupController.cs" Line="5" Column="5" />
-      <File FileName="Xamarin.LockScreen/Helpers/ILockScreenSetupDelegate.cs" Line="86" Column="86" />
+      <File FileName="Example/ExampleViewController.designer.cs" Line="1" Column="1" />
+      <File FileName="Xamarin.LockScreen/ViewControllers/MainLockScreenController.cs" Line="44" Column="44" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/tylervanderhoef/Documents/Github/Xamarin.LockScreen/Example/SecurityAccess.cs" line="48" column="1" />
+      <Breakpoint file="/Users/tylervanderhoef/Documents/Github/Xamarin.LockScreen/Example/SecurityAccess.cs" line="52" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>
