@@ -4,7 +4,7 @@ namespace Xamarin.LockScreen
 {
 	public interface ILockableScreen
 	{
-		bool IsLocked { get; set; }
+		bool IsLocked { get; }
 	}
 }
 

@@ -9,17 +9,13 @@ namespace Xamarin.LockScreen
 	[Register("MainLockScreenController")]
 	public class MainLockScreenController : UIViewController, ILockableScreen
 	{
-		private bool? isLocked;
 		private UIColor backgroundColor;
+		private NSUserDefaults settings = NSUserDefaults.StandardUserDefaults;
 
 		public bool IsLocked {
 			get {
-				if (isLocked == null) {
-					isLocked = true;
-				}
-				return isLocked.Value;
+				return settings.BoolForKey ("IsLocked");
 			}
-			set { isLocked = value; }
 		}
 		internal ILockScreenDelegate Locker { get; set; }
 		public int AttemptsAllowed { get; set; }
@@ -59,6 +55,7 @@ namespace Xamarin.LockScreen
 			if(backgroundColor != null)
 				lockScreen.View.BackgroundColor = backgroundColor;
 
+			UnlockApplication ();
 			lockScreen.Show (this);
 		}
 
@@ -71,7 +68,22 @@ namespace Xamarin.LockScreen
 			if(backgroundColor != null)
 				lockScreen.View.BackgroundColor = backgroundColor;
 
+			LockApplication ();
 			lockScreen.Show (this);
+		}
+
+		public static void UnlockApplication()
+		{
+			NSUserDefaults settings = NSUserDefaults.StandardUserDefaults;
+			settings.SetBool (false, "IsLocked");
+			settings.Synchronize ();
+		}
+
+		public static void LockApplication()
+		{
+			NSUserDefaults settings = NSUserDefaults.StandardUserDefaults;
+			settings.SetBool (true, "IsLocked");
+			settings.Synchronize ();
 		}
 
 		#region View lifecycle
@@ -100,6 +112,7 @@ namespace Xamarin.LockScreen
 			base.ViewDidAppear (animated);
 
 		}
+
 
 		public override void ViewWillDisappear (bool animated)
 		{

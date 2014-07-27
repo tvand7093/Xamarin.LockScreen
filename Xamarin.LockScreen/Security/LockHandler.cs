@@ -15,14 +15,13 @@ namespace Xamarin.LockScreen.Security
 		{
 			this.parent = parent;
 		}
-		public async void UnlockWasCancelledForPadLockScreen (BaseLockScreenController padLockScreenController)
+		public virtual async void UnlockWasCancelledForPadLockScreen (BaseLockScreenController padLockScreenController)
 		{
 			await parent.DismissViewControllerAsync (true);
 		}
-		public async void UnlockWasSuccessfulForPadLockScreenViewController (BaseLockScreenController padLockScreenController)
+		public virtual async void UnlockWasSuccessfulForPadLockScreenViewController (BaseLockScreenController padLockScreenController)
 		{
-			((ILockableScreen)parent).IsLocked = false;
-
+			MainLockScreenController.UnlockApplication ();
 			await parent.DismissViewControllerAsync (true);
 		}
 		public virtual void UnlockWasUnsuccessful (string badPin, int afterAttempt, BaseLockScreenController padLockScreenController)
@@ -58,10 +57,10 @@ namespace Xamarin.LockScreen.Security
 		/// <remarks>>At a minimum when overriding, call ((ILockableScreen)parent).IsLocked = false; to 
 		/// notify the controller to not re-present the lock screen.
 		/// </remarks>
-		public async void PinSet(string pin, BaseLockScreenController padLockScreenSetupViewController)
+		public virtual async void PinSet(string pin, BaseLockScreenController padLockScreenSetupViewController)
 		{
 			Keychain.SavePassword (pin);
-			((ILockableScreen)parent).IsLocked = false;
+			MainLockScreenController.UnlockApplication ();
 			await parent.DismissViewControllerAsync (true);
 		}
 	}

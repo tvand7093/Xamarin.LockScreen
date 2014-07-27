@@ -589,7 +589,7 @@ class_info_offsets:
 
 	.long 5,10,1,2
 	.short 0
-	.byte 134,175,7,23,63,128,181
+	.byte 134,175,7,23,63,128,177
 
 .text
 	.align 4
@@ -710,7 +710,7 @@ image_table:
 
 	.long 4
 	.asciz "Example"
-	.asciz "EB383C89-2541-48CF-85EF-A3F9D61E611C"
+	.asciz "EE5C819E-F301-4F10-B051-C631C42361A1"
 	.asciz ""
 	.asciz ""
 	.align 3
@@ -724,12 +724,12 @@ image_table:
 
 	.long 1,0,0,0,0
 	.asciz "Xamarin.LockScreen"
-	.asciz "9B758D71-5EBE-48E0-B791-D9BE968BE7B4"
+	.asciz "7AB5C5E9-EF11-4291-810D-F3F94854863D"
 	.asciz ""
 	.asciz ""
 	.align 3
 
-	.long 0,1,0,5321,914
+	.long 0,1,0,5321,3607
 	.asciz "mscorlib"
 	.asciz "5CC1FED7-CF0F-44FE-9AD1-1688951FE6B0"
 	.asciz ""
@@ -745,7 +745,7 @@ got_end:
 .section __TEXT, __const
 	.align 2
 assembly_guid:
-	.asciz "EB383C89-2541-48CF-85EF-A3F9D61E611C"
+	.asciz "EE5C819E-F301-4F10-B051-C631C42361A1"
 .section __TEXT, __const
 	.align 2
 runtime_version:
@@ -820,7 +820,7 @@ _mono_aot_file_info:
 	.align 2
 	.long unbox_trampolines_end
 
-	.long 33,208,19,22,14,387000831,0,2044
+	.long 33,208,19,22,14,387000831,0,2052
 	.long 0,0,0,0,0,0,0,0
 	.long 0,0,0,0,128,4,4,14
 	.long 0,0,0,0,0
@@ -836,11 +836,11 @@ blob:
 	.byte 0,0,1,4,0,2,5,6,1,3,1,7,1,3,1,8,1,3,1,9,1,3,6,10,11,12,13,14,14,1,3,1
 	.byte 15,1,3,1,16,1,3,2,17,18,1,3,1,19,1,3,3,20,21,12,0,1,22,0,1,23,0,1,24,0,1,25
 	.byte 0,2,26,27,0,1,28,0,1,29,0,1,30,0,1,31,0,1,32,12,0,39,42,47,40,40,17,0,1,40,40,40
-	.byte 40,14,2,128,156,1,16,1,3,2,11,1,4,16,1,3,3,40,40,40,14,1,4,40,40,17,0,25,40,40,40,40
-	.byte 40,14,2,13,2,40,40,40,40,40,3,193,0,3,111,3,193,0,4,54,3,193,0,3,200,7,24,109,111,110,111,95
-	.byte 111,98,106,101,99,116,95,110,101,119,95,115,112,101,99,105,102,105,99,0,3,193,0,4,47,3,13,3,193,0,4,160
-	.byte 3,194,0,0,196,3,194,0,0,195,3,194,0,0,205,3,194,0,0,208,7,20,109,111,110,111,95,111,98,106,101,99
-	.byte 116,95,110,101,119,95,102,97,115,116,0,3,194,0,0,219,3,194,0,0,203,3,194,0,0,209,3,194,0,0,210,3
+	.byte 40,14,2,128,157,1,16,1,3,2,11,1,4,16,1,3,3,40,40,40,14,1,4,40,40,17,0,25,40,40,40,40
+	.byte 40,14,2,13,2,40,40,40,40,40,3,193,0,3,118,3,193,0,4,61,3,193,0,3,207,7,24,109,111,110,111,95
+	.byte 111,98,106,101,99,116,95,110,101,119,95,115,112,101,99,105,102,105,99,0,3,193,0,4,54,3,13,3,193,0,4,167
+	.byte 3,194,0,0,195,3,194,0,0,194,3,194,0,0,203,3,194,0,0,208,7,20,109,111,110,111,95,111,98,106,101,99
+	.byte 116,95,110,101,119,95,102,97,115,116,0,3,194,0,0,219,3,194,0,0,201,3,194,0,0,209,3,194,0,0,210,3
 	.byte 194,0,0,211,3,194,0,0,212,10,0,2,255,255,255,255,255,52,0,0,193,0,0,0,20,0,0,12,88,0,100,208
 	.byte 0,0,13,8,0,1,7,88,10,19,6,255,255,255,255,255,52,0,0,1,24,0,1,2,1,16,0,1,3,7,48,1
 	.byte 1,4,5,32,0,0,192,255,255,242,16,0,0,30,128,204,68,128,216,208,0,0,13,8,0,9,0,68,1,24,1,24
@@ -887,17 +887,17 @@ blob:
 	.byte 0,17,124,68,128,136,208,0,0,13,8,0,3,0,68,1,24,1,32,10,0,5,255,255,255,255,255,56,0,0,1,24
 	.byte 0,1,2,7,28,0,1,3,1,16,0,0,192,255,255,247,16,0,0,27,128,156,72,128,168,208,0,0,13,12,208,0
 	.byte 0,13,8,0,5,0,72,2,32,5,4,1,16,1,32,0,128,144,8,0,0,1,4,128,144,8,0,0,1,195,0,8
-	.byte 228,195,0,8,225,195,0,8,224,195,0,8,222,18,128,230,11,193,0,1,37,24,8,0,4,193,0,1,48,195,0,8
-	.byte 225,193,0,1,37,195,0,8,222,193,0,1,33,193,0,1,38,193,0,1,59,193,0,1,50,193,0,1,41,193,0,1
-	.byte 36,193,0,1,35,10,9,7,6,8,5,4,47,128,162,193,0,1,37,40,0,0,4,193,0,1,48,195,0,8,225,193
-	.byte 0,1,37,195,0,8,222,193,0,1,33,193,0,1,38,193,0,1,59,193,0,4,39,193,0,1,41,193,0,1,36,193
-	.byte 0,4,10,193,0,3,194,193,0,3,193,193,0,4,15,193,0,4,26,193,0,4,31,193,0,4,24,193,0,4,37,193
-	.byte 0,4,38,193,0,4,38,193,0,4,37,18,16,15,19,17,193,0,4,31,193,0,4,30,193,0,4,29,193,0,4,28
-	.byte 193,0,4,27,193,0,4,26,193,0,4,25,193,0,4,24,193,0,4,23,193,0,4,22,14,193,0,4,18,193,0,4
-	.byte 17,193,0,4,16,193,0,4,15,193,0,4,14,193,0,4,13,194,0,0,197,194,0,0,198,194,0,0,207,194,0,0
-	.byte 206,13,128,160,12,0,0,4,195,0,8,228,195,0,8,225,195,0,8,224,195,0,8,222,194,0,0,220,194,0,0,221
-	.byte 194,0,0,222,194,0,0,225,194,0,0,223,194,0,0,224,194,0,0,224,194,0,0,223,194,0,0,222,98,111,101,104
-	.byte 109,0
+	.byte 228,195,0,8,225,195,0,8,224,195,0,8,222,18,128,230,11,193,0,1,44,24,8,0,4,193,0,1,55,195,0,8
+	.byte 225,193,0,1,44,195,0,8,222,193,0,1,40,193,0,1,45,193,0,1,66,193,0,1,57,193,0,1,48,193,0,1
+	.byte 43,193,0,1,42,10,9,7,6,8,5,4,46,128,162,193,0,1,44,40,0,0,4,193,0,1,55,195,0,8,225,193
+	.byte 0,1,44,195,0,8,222,193,0,1,40,193,0,1,45,193,0,1,66,193,0,4,46,193,0,1,48,193,0,1,43,193
+	.byte 0,4,17,193,0,3,201,193,0,3,200,193,0,4,22,193,0,4,33,193,0,4,38,193,0,4,31,193,0,4,44,193
+	.byte 0,4,45,193,0,4,45,193,0,4,44,18,16,15,19,17,193,0,4,38,193,0,4,37,193,0,4,36,193,0,4,35
+	.byte 193,0,4,34,193,0,4,33,193,0,4,32,193,0,4,31,193,0,4,30,193,0,4,29,14,193,0,4,25,193,0,4
+	.byte 24,193,0,4,23,193,0,4,22,193,0,4,21,193,0,4,20,194,0,0,196,194,0,0,205,194,0,0,204,16,128,160
+	.byte 12,0,0,4,195,0,8,228,195,0,8,225,195,0,8,224,195,0,8,222,194,0,0,220,194,0,0,221,194,0,0,222
+	.byte 194,0,0,225,194,0,0,223,194,0,0,224,194,0,0,225,194,0,0,224,194,0,0,223,194,0,0,222,194,0,0,221
+	.byte 194,0,0,220,98,111,101,104,109,0
 .section __TEXT, __const
 	.align 3
 Lglobals_hash:
@@ -1701,118 +1701,141 @@ LDIFF_SYM115=LTDIE_16 - Ldebug_info_start
 	.long LDIFF_SYM115
 LTDIE_17:
 
+	.byte 5
+	.asciz "MonoTouch_Foundation_NSUserDefaults"
+
+	.byte 20,16
+LDIFF_SYM116=LTDIE_4 - Ldebug_info_start
+	.long LDIFF_SYM116
+	.byte 2,35,0,0,7
+	.asciz "MonoTouch_Foundation_NSUserDefaults"
+
+LDIFF_SYM117=LTDIE_17 - Ldebug_info_start
+	.long LDIFF_SYM117
+LTDIE_17_POINTER:
+
+	.byte 13
+LDIFF_SYM118=LTDIE_17 - Ldebug_info_start
+	.long LDIFF_SYM118
+LTDIE_17_REFERENCE:
+
+	.byte 14
+LDIFF_SYM119=LTDIE_17 - Ldebug_info_start
+	.long LDIFF_SYM119
+LTDIE_18:
+
 	.byte 17
 	.asciz "Xamarin_LockScreen_Interfaces_ILockScreenDelegate"
 
 	.byte 8,7
 	.asciz "Xamarin_LockScreen_Interfaces_ILockScreenDelegate"
 
-LDIFF_SYM116=LTDIE_17 - Ldebug_info_start
-	.long LDIFF_SYM116
-LTDIE_17_POINTER:
+LDIFF_SYM120=LTDIE_18 - Ldebug_info_start
+	.long LDIFF_SYM120
+LTDIE_18_POINTER:
 
 	.byte 13
-LDIFF_SYM117=LTDIE_17 - Ldebug_info_start
-	.long LDIFF_SYM117
-LTDIE_17_REFERENCE:
+LDIFF_SYM121=LTDIE_18 - Ldebug_info_start
+	.long LDIFF_SYM121
+LTDIE_18_REFERENCE:
 
 	.byte 14
-LDIFF_SYM118=LTDIE_17 - Ldebug_info_start
-	.long LDIFF_SYM118
-LTDIE_18:
+LDIFF_SYM122=LTDIE_18 - Ldebug_info_start
+	.long LDIFF_SYM122
+LTDIE_19:
 
 	.byte 5
 	.asciz "System_Int32"
 
 	.byte 12,16
-LDIFF_SYM119=LTDIE_7 - Ldebug_info_start
-	.long LDIFF_SYM119
+LDIFF_SYM123=LTDIE_7 - Ldebug_info_start
+	.long LDIFF_SYM123
 	.byte 2,35,0,6
 	.asciz "m_value"
 
-LDIFF_SYM120=LDIE_I4 - Ldebug_info_start
-	.long LDIFF_SYM120
+LDIFF_SYM124=LDIE_I4 - Ldebug_info_start
+	.long LDIFF_SYM124
 	.byte 2,35,8,0,7
 	.asciz "System_Int32"
 
-LDIFF_SYM121=LTDIE_18 - Ldebug_info_start
-	.long LDIFF_SYM121
-LTDIE_18_POINTER:
+LDIFF_SYM125=LTDIE_19 - Ldebug_info_start
+	.long LDIFF_SYM125
+LTDIE_19_POINTER:
 
 	.byte 13
-LDIFF_SYM122=LTDIE_18 - Ldebug_info_start
-	.long LDIFF_SYM122
-LTDIE_18_REFERENCE:
+LDIFF_SYM126=LTDIE_19 - Ldebug_info_start
+	.long LDIFF_SYM126
+LTDIE_19_REFERENCE:
 
 	.byte 14
-LDIFF_SYM123=LTDIE_18 - Ldebug_info_start
-	.long LDIFF_SYM123
+LDIFF_SYM127=LTDIE_19 - Ldebug_info_start
+	.long LDIFF_SYM127
 LTDIE_14:
 
 	.byte 5
 	.asciz "Xamarin_LockScreen_MainLockScreenController"
 
 	.byte 40,16
-LDIFF_SYM124=LTDIE_15 - Ldebug_info_start
-	.long LDIFF_SYM124
+LDIFF_SYM128=LTDIE_15 - Ldebug_info_start
+	.long LDIFF_SYM128
 	.byte 2,35,0,6
-	.asciz "isLocked"
-
-LDIFF_SYM125=LDIE_I4 - Ldebug_info_start
-	.long LDIFF_SYM125
-	.byte 2,35,32,6
 	.asciz "backgroundColor"
 
-LDIFF_SYM126=LTDIE_16_REFERENCE - Ldebug_info_start
-	.long LDIFF_SYM126
+LDIFF_SYM129=LTDIE_16_REFERENCE - Ldebug_info_start
+	.long LDIFF_SYM129
 	.byte 2,35,24,6
+	.asciz "settings"
+
+LDIFF_SYM130=LTDIE_17_REFERENCE - Ldebug_info_start
+	.long LDIFF_SYM130
+	.byte 2,35,28,6
 	.asciz "<Locker>k__BackingField"
 
-LDIFF_SYM127=LTDIE_17_REFERENCE - Ldebug_info_start
-	.long LDIFF_SYM127
-	.byte 2,35,28,6
+LDIFF_SYM131=LTDIE_18_REFERENCE - Ldebug_info_start
+	.long LDIFF_SYM131
+	.byte 2,35,32,6
 	.asciz "<AttemptsAllowed>k__BackingField"
 
-LDIFF_SYM128=LDIE_I4 - Ldebug_info_start
-	.long LDIFF_SYM128
+LDIFF_SYM132=LDIE_I4 - Ldebug_info_start
+	.long LDIFF_SYM132
 	.byte 2,35,36,0,7
 	.asciz "Xamarin_LockScreen_MainLockScreenController"
 
-LDIFF_SYM129=LTDIE_14 - Ldebug_info_start
-	.long LDIFF_SYM129
+LDIFF_SYM133=LTDIE_14 - Ldebug_info_start
+	.long LDIFF_SYM133
 LTDIE_14_POINTER:
 
 	.byte 13
-LDIFF_SYM130=LTDIE_14 - Ldebug_info_start
-	.long LDIFF_SYM130
+LDIFF_SYM134=LTDIE_14 - Ldebug_info_start
+	.long LDIFF_SYM134
 LTDIE_14_REFERENCE:
 
 	.byte 14
-LDIFF_SYM131=LTDIE_14 - Ldebug_info_start
-	.long LDIFF_SYM131
+LDIFF_SYM135=LTDIE_14 - Ldebug_info_start
+	.long LDIFF_SYM135
 LTDIE_13:
 
 	.byte 5
 	.asciz "Example_ExampleViewController"
 
 	.byte 40,16
-LDIFF_SYM132=LTDIE_14 - Ldebug_info_start
-	.long LDIFF_SYM132
+LDIFF_SYM136=LTDIE_14 - Ldebug_info_start
+	.long LDIFF_SYM136
 	.byte 2,35,0,0,7
 	.asciz "Example_ExampleViewController"
 
-LDIFF_SYM133=LTDIE_13 - Ldebug_info_start
-	.long LDIFF_SYM133
+LDIFF_SYM137=LTDIE_13 - Ldebug_info_start
+	.long LDIFF_SYM137
 LTDIE_13_POINTER:
 
 	.byte 13
-LDIFF_SYM134=LTDIE_13 - Ldebug_info_start
-	.long LDIFF_SYM134
+LDIFF_SYM138=LTDIE_13 - Ldebug_info_start
+	.long LDIFF_SYM138
 LTDIE_13_REFERENCE:
 
 	.byte 14
-LDIFF_SYM135=LTDIE_13 - Ldebug_info_start
-	.long LDIFF_SYM135
+LDIFF_SYM139=LTDIE_13 - Ldebug_info_start
+	.long LDIFF_SYM139
 	.byte 2
 	.asciz "Example.ExampleViewController:.ctor"
 	.long _Example_ExampleViewController__ctor_intptr
@@ -1821,27 +1844,27 @@ LDIFF_SYM135=LTDIE_13 - Ldebug_info_start
 	.byte 2,118,16,3
 	.asciz "this"
 
-LDIFF_SYM136=LTDIE_13_REFERENCE - Ldebug_info_start
-	.long LDIFF_SYM136
+LDIFF_SYM140=LTDIE_13_REFERENCE - Ldebug_info_start
+	.long LDIFF_SYM140
 	.byte 2,125,8,3
 	.asciz "handle"
 
-LDIFF_SYM137=LDIE_I - Ldebug_info_start
-	.long LDIFF_SYM137
+LDIFF_SYM141=LDIE_I - Ldebug_info_start
+	.long LDIFF_SYM141
 	.byte 2,125,12,0
 
 .section __DWARF, __debug_frame,regular,debug
 
-LDIFF_SYM138=Lfde11_end - Lfde11_start
-	.long LDIFF_SYM138
+LDIFF_SYM142=Lfde11_end - Lfde11_start
+	.long LDIFF_SYM142
 Lfde11_start:
 
 	.long 0
 	.align 2
 	.long _Example_ExampleViewController__ctor_intptr
 
-LDIFF_SYM139=Lme_b - _Example_ExampleViewController__ctor_intptr
-	.long LDIFF_SYM139
+LDIFF_SYM143=Lme_b - _Example_ExampleViewController__ctor_intptr
+	.long LDIFF_SYM143
 	.byte 12,13,0,72,14,8,135,2,68,14,12,136,3,142,1,68,14,32
 	.align 2
 Lfde11_end:
@@ -1856,22 +1879,22 @@ Lfde11_end:
 	.byte 2,118,16,3
 	.asciz "this"
 
-LDIFF_SYM140=LTDIE_13_REFERENCE - Ldebug_info_start
-	.long LDIFF_SYM140
+LDIFF_SYM144=LTDIE_13_REFERENCE - Ldebug_info_start
+	.long LDIFF_SYM144
 	.byte 2,125,8,0
 
 .section __DWARF, __debug_frame,regular,debug
 
-LDIFF_SYM141=Lfde12_end - Lfde12_start
-	.long LDIFF_SYM141
+LDIFF_SYM145=Lfde12_end - Lfde12_start
+	.long LDIFF_SYM145
 Lfde12_start:
 
 	.long 0
 	.align 2
 	.long _Example_ExampleViewController__ctor
 
-LDIFF_SYM142=Lme_c - _Example_ExampleViewController__ctor
-	.long LDIFF_SYM142
+LDIFF_SYM146=Lme_c - _Example_ExampleViewController__ctor
+	.long LDIFF_SYM146
 	.byte 12,13,0,72,14,8,135,2,68,14,12,136,3,142,1,68,14,32
 	.align 2
 Lfde12_end:
@@ -1886,22 +1909,22 @@ Lfde12_end:
 	.byte 2,118,16,3
 	.asciz "this"
 
-LDIFF_SYM143=LTDIE_13_REFERENCE - Ldebug_info_start
-	.long LDIFF_SYM143
+LDIFF_SYM147=LTDIE_13_REFERENCE - Ldebug_info_start
+	.long LDIFF_SYM147
 	.byte 2,125,8,0
 
 .section __DWARF, __debug_frame,regular,debug
 
-LDIFF_SYM144=Lfde13_end - Lfde13_start
-	.long LDIFF_SYM144
+LDIFF_SYM148=Lfde13_end - Lfde13_start
+	.long LDIFF_SYM148
 Lfde13_start:
 
 	.long 0
 	.align 2
 	.long _Example_ExampleViewController_DidReceiveMemoryWarning
 
-LDIFF_SYM145=Lme_d - _Example_ExampleViewController_DidReceiveMemoryWarning
-	.long LDIFF_SYM145
+LDIFF_SYM149=Lme_d - _Example_ExampleViewController_DidReceiveMemoryWarning
+	.long LDIFF_SYM149
 	.byte 12,13,0,72,14,8,135,2,68,14,12,136,3,142,1,68,14,40
 	.align 2
 Lfde13_end:
@@ -1916,22 +1939,22 @@ Lfde13_end:
 	.byte 2,118,16,3
 	.asciz "this"
 
-LDIFF_SYM146=LTDIE_13_REFERENCE - Ldebug_info_start
-	.long LDIFF_SYM146
+LDIFF_SYM150=LTDIE_13_REFERENCE - Ldebug_info_start
+	.long LDIFF_SYM150
 	.byte 2,125,8,0
 
 .section __DWARF, __debug_frame,regular,debug
 
-LDIFF_SYM147=Lfde14_end - Lfde14_start
-	.long LDIFF_SYM147
+LDIFF_SYM151=Lfde14_end - Lfde14_start
+	.long LDIFF_SYM151
 Lfde14_start:
 
 	.long 0
 	.align 2
 	.long _Example_ExampleViewController_ViewDidLoad
 
-LDIFF_SYM148=Lme_e - _Example_ExampleViewController_ViewDidLoad
-	.long LDIFF_SYM148
+LDIFF_SYM152=Lme_e - _Example_ExampleViewController_ViewDidLoad
+	.long LDIFF_SYM152
 	.byte 12,13,0,72,14,8,135,2,68,14,12,136,3,142,1,68,14,40
 	.align 2
 Lfde14_end:
@@ -1946,27 +1969,27 @@ Lfde14_end:
 	.byte 2,118,16,3
 	.asciz "this"
 
-LDIFF_SYM149=LTDIE_13_REFERENCE - Ldebug_info_start
-	.long LDIFF_SYM149
+LDIFF_SYM153=LTDIE_13_REFERENCE - Ldebug_info_start
+	.long LDIFF_SYM153
 	.byte 1,90,3
 	.asciz "animated"
 
-LDIFF_SYM150=LDIE_BOOLEAN - Ldebug_info_start
-	.long LDIFF_SYM150
+LDIFF_SYM154=LDIE_BOOLEAN - Ldebug_info_start
+	.long LDIFF_SYM154
 	.byte 2,125,8,0
 
 .section __DWARF, __debug_frame,regular,debug
 
-LDIFF_SYM151=Lfde15_end - Lfde15_start
-	.long LDIFF_SYM151
+LDIFF_SYM155=Lfde15_end - Lfde15_start
+	.long LDIFF_SYM155
 Lfde15_start:
 
 	.long 0
 	.align 2
 	.long _Example_ExampleViewController_ViewWillAppear_bool
 
-LDIFF_SYM152=Lme_f - _Example_ExampleViewController_ViewWillAppear_bool
-	.long LDIFF_SYM152
+LDIFF_SYM156=Lme_f - _Example_ExampleViewController_ViewWillAppear_bool
+	.long LDIFF_SYM156
 	.byte 12,13,0,72,14,8,135,2,68,14,16,136,4,138,3,142,1,68,14,40
 	.align 2
 Lfde15_end:
@@ -1977,41 +2000,6 @@ Lfde15_end:
 	.asciz "Example.ExampleViewController:ViewDidAppear"
 	.long _Example_ExampleViewController_ViewDidAppear_bool
 	.long Lme_10
-
-	.byte 2,118,16,3
-	.asciz "this"
-
-LDIFF_SYM153=LTDIE_13_REFERENCE - Ldebug_info_start
-	.long LDIFF_SYM153
-	.byte 2,125,8,3
-	.asciz "animated"
-
-LDIFF_SYM154=LDIE_BOOLEAN - Ldebug_info_start
-	.long LDIFF_SYM154
-	.byte 2,125,12,0
-
-.section __DWARF, __debug_frame,regular,debug
-
-LDIFF_SYM155=Lfde16_end - Lfde16_start
-	.long LDIFF_SYM155
-Lfde16_start:
-
-	.long 0
-	.align 2
-	.long _Example_ExampleViewController_ViewDidAppear_bool
-
-LDIFF_SYM156=Lme_10 - _Example_ExampleViewController_ViewDidAppear_bool
-	.long LDIFF_SYM156
-	.byte 12,13,0,72,14,8,135,2,68,14,12,136,3,142,1,68,14,40
-	.align 2
-Lfde16_end:
-
-.section __DWARF, __debug_info,regular,debug
-
-	.byte 2
-	.asciz "Example.ExampleViewController:ViewWillDisappear"
-	.long _Example_ExampleViewController_ViewWillDisappear_bool
-	.long Lme_11
 
 	.byte 2,118,16,3
 	.asciz "this"
@@ -2027,26 +2015,26 @@ LDIFF_SYM158=LDIE_BOOLEAN - Ldebug_info_start
 
 .section __DWARF, __debug_frame,regular,debug
 
-LDIFF_SYM159=Lfde17_end - Lfde17_start
+LDIFF_SYM159=Lfde16_end - Lfde16_start
 	.long LDIFF_SYM159
-Lfde17_start:
+Lfde16_start:
 
 	.long 0
 	.align 2
-	.long _Example_ExampleViewController_ViewWillDisappear_bool
+	.long _Example_ExampleViewController_ViewDidAppear_bool
 
-LDIFF_SYM160=Lme_11 - _Example_ExampleViewController_ViewWillDisappear_bool
+LDIFF_SYM160=Lme_10 - _Example_ExampleViewController_ViewDidAppear_bool
 	.long LDIFF_SYM160
 	.byte 12,13,0,72,14,8,135,2,68,14,12,136,3,142,1,68,14,40
 	.align 2
-Lfde17_end:
+Lfde16_end:
 
 .section __DWARF, __debug_info,regular,debug
 
 	.byte 2
-	.asciz "Example.ExampleViewController:ViewDidDisappear"
-	.long _Example_ExampleViewController_ViewDidDisappear_bool
-	.long Lme_12
+	.asciz "Example.ExampleViewController:ViewWillDisappear"
+	.long _Example_ExampleViewController_ViewWillDisappear_bool
+	.long Lme_11
 
 	.byte 2,118,16,3
 	.asciz "this"
@@ -2062,16 +2050,51 @@ LDIFF_SYM162=LDIE_BOOLEAN - Ldebug_info_start
 
 .section __DWARF, __debug_frame,regular,debug
 
-LDIFF_SYM163=Lfde18_end - Lfde18_start
+LDIFF_SYM163=Lfde17_end - Lfde17_start
 	.long LDIFF_SYM163
+Lfde17_start:
+
+	.long 0
+	.align 2
+	.long _Example_ExampleViewController_ViewWillDisappear_bool
+
+LDIFF_SYM164=Lme_11 - _Example_ExampleViewController_ViewWillDisappear_bool
+	.long LDIFF_SYM164
+	.byte 12,13,0,72,14,8,135,2,68,14,12,136,3,142,1,68,14,40
+	.align 2
+Lfde17_end:
+
+.section __DWARF, __debug_info,regular,debug
+
+	.byte 2
+	.asciz "Example.ExampleViewController:ViewDidDisappear"
+	.long _Example_ExampleViewController_ViewDidDisappear_bool
+	.long Lme_12
+
+	.byte 2,118,16,3
+	.asciz "this"
+
+LDIFF_SYM165=LTDIE_13_REFERENCE - Ldebug_info_start
+	.long LDIFF_SYM165
+	.byte 2,125,8,3
+	.asciz "animated"
+
+LDIFF_SYM166=LDIE_BOOLEAN - Ldebug_info_start
+	.long LDIFF_SYM166
+	.byte 2,125,12,0
+
+.section __DWARF, __debug_frame,regular,debug
+
+LDIFF_SYM167=Lfde18_end - Lfde18_start
+	.long LDIFF_SYM167
 Lfde18_start:
 
 	.long 0
 	.align 2
 	.long _Example_ExampleViewController_ViewDidDisappear_bool
 
-LDIFF_SYM164=Lme_12 - _Example_ExampleViewController_ViewDidDisappear_bool
-	.long LDIFF_SYM164
+LDIFF_SYM168=Lme_12 - _Example_ExampleViewController_ViewDidDisappear_bool
+	.long LDIFF_SYM168
 	.byte 12,13,0,72,14,8,135,2,68,14,12,136,3,142,1,68,14,40
 	.align 2
 Lfde18_end:
@@ -2086,78 +2109,78 @@ Lfde18_end:
 	.byte 2,118,16,3
 	.asciz "this"
 
-LDIFF_SYM165=LTDIE_13_REFERENCE - Ldebug_info_start
-	.long LDIFF_SYM165
+LDIFF_SYM169=LTDIE_13_REFERENCE - Ldebug_info_start
+	.long LDIFF_SYM169
 	.byte 2,125,8,0
 
 .section __DWARF, __debug_frame,regular,debug
 
-LDIFF_SYM166=Lfde19_end - Lfde19_start
-	.long LDIFF_SYM166
+LDIFF_SYM170=Lfde19_end - Lfde19_start
+	.long LDIFF_SYM170
 Lfde19_start:
 
 	.long 0
 	.align 2
 	.long _Example_ExampleViewController_ReleaseDesignerOutlets
 
-LDIFF_SYM167=Lme_13 - _Example_ExampleViewController_ReleaseDesignerOutlets
-	.long LDIFF_SYM167
+LDIFF_SYM171=Lme_13 - _Example_ExampleViewController_ReleaseDesignerOutlets
+	.long LDIFF_SYM171
 	.byte 12,13,0,72,14,8,135,2,68,14,12,136,3,142,1,68,14,32
 	.align 2
 Lfde19_end:
 
 .section __DWARF, __debug_info,regular,debug
-LTDIE_20:
+LTDIE_21:
 
 	.byte 5
 	.asciz "Xamarin_LockScreen_Security_LockHandler"
 
 	.byte 12,16
-LDIFF_SYM168=LTDIE_1 - Ldebug_info_start
-	.long LDIFF_SYM168
+LDIFF_SYM172=LTDIE_1 - Ldebug_info_start
+	.long LDIFF_SYM172
 	.byte 2,35,0,6
 	.asciz "parent"
 
-LDIFF_SYM169=LTDIE_15_REFERENCE - Ldebug_info_start
-	.long LDIFF_SYM169
+LDIFF_SYM173=LTDIE_15_REFERENCE - Ldebug_info_start
+	.long LDIFF_SYM173
 	.byte 2,35,8,0,7
 	.asciz "Xamarin_LockScreen_Security_LockHandler"
 
-LDIFF_SYM170=LTDIE_20 - Ldebug_info_start
-	.long LDIFF_SYM170
-LTDIE_20_POINTER:
+LDIFF_SYM174=LTDIE_21 - Ldebug_info_start
+	.long LDIFF_SYM174
+LTDIE_21_POINTER:
 
 	.byte 13
-LDIFF_SYM171=LTDIE_20 - Ldebug_info_start
-	.long LDIFF_SYM171
-LTDIE_20_REFERENCE:
+LDIFF_SYM175=LTDIE_21 - Ldebug_info_start
+	.long LDIFF_SYM175
+LTDIE_21_REFERENCE:
 
 	.byte 14
-LDIFF_SYM172=LTDIE_20 - Ldebug_info_start
-	.long LDIFF_SYM172
-LTDIE_19:
+LDIFF_SYM176=LTDIE_21 - Ldebug_info_start
+	.long LDIFF_SYM176
+LTDIE_20:
 
 	.byte 5
 	.asciz "Example_LockDelegate"
 
 	.byte 12,16
-LDIFF_SYM173=LTDIE_20 - Ldebug_info_start
-	.long LDIFF_SYM173
+LDIFF_SYM177=LTDIE_21 - Ldebug_info_start
+	.long LDIFF_SYM177
 	.byte 2,35,0,0,7
 	.asciz "Example_LockDelegate"
 
-LDIFF_SYM174=LTDIE_19 - Ldebug_info_start
-	.long LDIFF_SYM174
-LTDIE_19_POINTER:
+LDIFF_SYM178=LTDIE_20 - Ldebug_info_start
+	.long LDIFF_SYM178
+LTDIE_20_POINTER:
 
 	.byte 13
-LDIFF_SYM175=LTDIE_19 - Ldebug_info_start
-	.long LDIFF_SYM175
-LTDIE_19_REFERENCE:
+LDIFF_SYM179=LTDIE_20 - Ldebug_info_start
+	.long LDIFF_SYM179
+LTDIE_20_REFERENCE:
 
 	.byte 14
-LDIFF_SYM176=LTDIE_19 - Ldebug_info_start
-	.long LDIFF_SYM176
+LDIFF_SYM180=LTDIE_20 - Ldebug_info_start
+	.long LDIFF_SYM180
 	.byte 2
 	.asciz "Example.LockDelegate:.ctor"
 	.long _Example_LockDelegate__ctor_MonoTouch_UIKit_UIViewController
@@ -2166,27 +2189,27 @@ LDIFF_SYM176=LTDIE_19 - Ldebug_info_start
 	.byte 2,118,16,3
 	.asciz "this"
 
-LDIFF_SYM177=LTDIE_19_REFERENCE - Ldebug_info_start
-	.long LDIFF_SYM177
+LDIFF_SYM181=LTDIE_20_REFERENCE - Ldebug_info_start
+	.long LDIFF_SYM181
 	.byte 2,125,8,3
 	.asciz "parent"
 
-LDIFF_SYM178=LTDIE_15_REFERENCE - Ldebug_info_start
-	.long LDIFF_SYM178
+LDIFF_SYM182=LTDIE_15_REFERENCE - Ldebug_info_start
+	.long LDIFF_SYM182
 	.byte 2,125,12,0
 
 .section __DWARF, __debug_frame,regular,debug
 
-LDIFF_SYM179=Lfde20_end - Lfde20_start
-	.long LDIFF_SYM179
+LDIFF_SYM183=Lfde20_end - Lfde20_start
+	.long LDIFF_SYM183
 Lfde20_start:
 
 	.long 0
 	.align 2
 	.long _Example_LockDelegate__ctor_MonoTouch_UIKit_UIViewController
 
-LDIFF_SYM180=Lme_14 - _Example_LockDelegate__ctor_MonoTouch_UIKit_UIViewController
-	.long LDIFF_SYM180
+LDIFF_SYM184=Lme_14 - _Example_LockDelegate__ctor_MonoTouch_UIKit_UIViewController
+	.long LDIFF_SYM184
 	.byte 12,13,0,72,14,8,135,2,68,14,12,136,3,142,1,68,14,32
 	.align 2
 Lfde20_end:

@@ -49,6 +49,9 @@ public class MyDelegate : LockHandler
 	public override ValidatePin(BaseLockScreenController padLockScreenController, string pin)
 	{
 		//do your customizing of pin validation here!
+		//IMPORTANT: make sure you call the base implementation in all overrides.
+		//If you don't, the behaviour may be unpredictable.
+		base.ValidatePin(padLockScreenController, pin);
 		return true;
 	}
 	//don't fret, there are more methods to override! 
