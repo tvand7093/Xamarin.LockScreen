@@ -22,7 +22,10 @@ public class MyController : MainLockScreenController
 	public override ViewWillAppear(bool animated)
 	{
 		//You can make a call like below to customize background color
-		//base.Initialize(3, new LockHandler(this), UIColor.White);
+		
+		//this will set the pin attempt count to 3, 
+		//set the default delegate, and set the background color to be blue.
+		base.Initialize(3, new LockHandler(this), UIColor.Blue);
 		
 		//Lock hanlder is a presetup delegate. Handles saving
 		//passcode in Keychain.
@@ -60,7 +63,6 @@ public class MyDelegate : LockHandler
 This library does a few things for you. The first thing is it handles password storage. When you setup a pin for the first time using the default delegate, it will store the pin value in your devices Keychain.
 
 When you subclass the MainLockScreenController, it automattically handles locking and unlocking of your application. This happens on the 'ViewDidAppear' method, so if you want to do any special work before the lock screen shows, do so before the 'base.ViewDidAppear' call. 
-
 
 ### Final Notes
 
