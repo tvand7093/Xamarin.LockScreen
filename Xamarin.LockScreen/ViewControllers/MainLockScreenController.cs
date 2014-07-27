@@ -10,6 +10,7 @@ namespace Xamarin.LockScreen
 	public class MainLockScreenController : UIViewController, ILockableScreen
 	{
 		private bool? isLocked;
+		private UIColor backgroundColor;
 
 		public bool IsLocked {
 			get {
@@ -29,6 +30,7 @@ namespace Xamarin.LockScreen
 
 		public MainLockScreenController (IntPtr handle) : base (handle)
 		{
+
 		}
 
 		public void Initialize(int attemptsAllowed, ILockScreenDelegate locker)
@@ -36,7 +38,12 @@ namespace Xamarin.LockScreen
 			AttemptsAllowed = attemptsAllowed;
 			Locker = locker;
 		}
-
+		public void Initialize(int attemptsAllowed, ILockScreenDelegate locker,
+			UIColor backgroundColor)
+		{
+			Initialize (attemptsAllowed, locker);
+			this.backgroundColor = backgroundColor;
+		}
 		public override void DidReceiveMemoryWarning ()
 		{
 			// Releases the view if it doesn't have a superview.
@@ -46,17 +53,24 @@ namespace Xamarin.LockScreen
 		}
 
 		[Action("SetPin")]
-		public void SetPin()
+		public virtual void SetPin()
 		{
 			var lockScreen = new LockScreenSetupController (Locker);
+			if(backgroundColor != null)
+				lockScreen.View.BackgroundColor = backgroundColor;
+
 			lockScreen.Show (this);
 		}
 
 		[Action("Lock")]
-		public void Lock()
+		public virtual void Lock()
 		{
 			LockScreenController lockScreen = new LockScreenController (Locker);
 			lockScreen.SetAllowedAttempts (AttemptsAllowed);
+
+			if(backgroundColor != null)
+				lockScreen.View.BackgroundColor = backgroundColor;
+
 			lockScreen.Show (this);
 		}
 

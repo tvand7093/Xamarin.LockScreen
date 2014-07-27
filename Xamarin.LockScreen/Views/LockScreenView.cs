@@ -162,7 +162,7 @@ namespace Xamarin.LockScreen.Views
 			}
 		}
 
-		internal async void ShowCancelButtonAnimated(bool animated)
+		internal void ShowCancelButtonAnimated(bool animated)
 		{
 			PerformAnimations (() => {
 				this.CancelButton.Alpha = 1.0f;

@@ -498,49 +498,49 @@ int native_to_managed_trampoline_12 (id self, SEL _cmd, MonoMethod **managed_met
 	-(void) didReceiveMemoryWarning
 	{
 		static MonoMethod *managed_method = NULL;
-		native_to_managed_trampoline_6 (self, _cmd, &managed_method, "Xamarin.LockScreen.MainLockScreenController, Xamarin.LockScreen, Version=1.0.5320.36486, Culture=neutral, PublicKeyToken=null", "DidReceiveMemoryWarning");
+		native_to_managed_trampoline_6 (self, _cmd, &managed_method, "Xamarin.LockScreen.MainLockScreenController, Xamarin.LockScreen, Version=1.0.5321.914, Culture=neutral, PublicKeyToken=null", "DidReceiveMemoryWarning");
 	}
 
 	-(void) SetPin
 	{
 		static MonoMethod *managed_method = NULL;
-		native_to_managed_trampoline_6 (self, _cmd, &managed_method, "Xamarin.LockScreen.MainLockScreenController, Xamarin.LockScreen, Version=1.0.5320.36486, Culture=neutral, PublicKeyToken=null", "SetPin");
+		native_to_managed_trampoline_6 (self, _cmd, &managed_method, "Xamarin.LockScreen.MainLockScreenController, Xamarin.LockScreen, Version=1.0.5321.914, Culture=neutral, PublicKeyToken=null", "SetPin");
 	}
 
 	-(void) Lock
 	{
 		static MonoMethod *managed_method = NULL;
-		native_to_managed_trampoline_6 (self, _cmd, &managed_method, "Xamarin.LockScreen.MainLockScreenController, Xamarin.LockScreen, Version=1.0.5320.36486, Culture=neutral, PublicKeyToken=null", "Lock");
+		native_to_managed_trampoline_6 (self, _cmd, &managed_method, "Xamarin.LockScreen.MainLockScreenController, Xamarin.LockScreen, Version=1.0.5321.914, Culture=neutral, PublicKeyToken=null", "Lock");
 	}
 
 	-(void) viewDidLoad
 	{
 		static MonoMethod *managed_method = NULL;
-		native_to_managed_trampoline_6 (self, _cmd, &managed_method, "Xamarin.LockScreen.MainLockScreenController, Xamarin.LockScreen, Version=1.0.5320.36486, Culture=neutral, PublicKeyToken=null", "ViewDidLoad");
+		native_to_managed_trampoline_6 (self, _cmd, &managed_method, "Xamarin.LockScreen.MainLockScreenController, Xamarin.LockScreen, Version=1.0.5321.914, Culture=neutral, PublicKeyToken=null", "ViewDidLoad");
 	}
 
 	-(void) viewWillAppear:(bool)p0
 	{
 		static MonoMethod *managed_method = NULL;
-		native_to_managed_trampoline_7 (self, _cmd, &managed_method, p0, "System.Boolean, mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e", "Xamarin.LockScreen.MainLockScreenController, Xamarin.LockScreen, Version=1.0.5320.36486, Culture=neutral, PublicKeyToken=null", "ViewWillAppear");
+		native_to_managed_trampoline_7 (self, _cmd, &managed_method, p0, "System.Boolean, mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e", "Xamarin.LockScreen.MainLockScreenController, Xamarin.LockScreen, Version=1.0.5321.914, Culture=neutral, PublicKeyToken=null", "ViewWillAppear");
 	}
 
 	-(void) viewDidAppear:(bool)p0
 	{
 		static MonoMethod *managed_method = NULL;
-		native_to_managed_trampoline_7 (self, _cmd, &managed_method, p0, "System.Boolean, mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e", "Xamarin.LockScreen.MainLockScreenController, Xamarin.LockScreen, Version=1.0.5320.36486, Culture=neutral, PublicKeyToken=null", "ViewDidAppear");
+		native_to_managed_trampoline_7 (self, _cmd, &managed_method, p0, "System.Boolean, mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e", "Xamarin.LockScreen.MainLockScreenController, Xamarin.LockScreen, Version=1.0.5321.914, Culture=neutral, PublicKeyToken=null", "ViewDidAppear");
 	}
 
 	-(void) viewWillDisappear:(bool)p0
 	{
 		static MonoMethod *managed_method = NULL;
-		native_to_managed_trampoline_7 (self, _cmd, &managed_method, p0, "System.Boolean, mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e", "Xamarin.LockScreen.MainLockScreenController, Xamarin.LockScreen, Version=1.0.5320.36486, Culture=neutral, PublicKeyToken=null", "ViewWillDisappear");
+		native_to_managed_trampoline_7 (self, _cmd, &managed_method, p0, "System.Boolean, mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e", "Xamarin.LockScreen.MainLockScreenController, Xamarin.LockScreen, Version=1.0.5321.914, Culture=neutral, PublicKeyToken=null", "ViewWillDisappear");
 	}
 
 	-(void) viewDidDisappear:(bool)p0
 	{
 		static MonoMethod *managed_method = NULL;
-		native_to_managed_trampoline_7 (self, _cmd, &managed_method, p0, "System.Boolean, mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e", "Xamarin.LockScreen.MainLockScreenController, Xamarin.LockScreen, Version=1.0.5320.36486, Culture=neutral, PublicKeyToken=null", "ViewDidDisappear");
+		native_to_managed_trampoline_7 (self, _cmd, &managed_method, p0, "System.Boolean, mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e", "Xamarin.LockScreen.MainLockScreenController, Xamarin.LockScreen, Version=1.0.5321.914, Culture=neutral, PublicKeyToken=null", "ViewDidDisappear");
 	}
 
 	-(bool) conformsToProtocol:(void *)p0
@@ -552,7 +552,7 @@ int native_to_managed_trampoline_12 (id self, SEL _cmd, MonoMethod **managed_met
 	-(id) init
 	{
 		static MonoMethod *managed_method = NULL;
-		return native_to_managed_trampoline_5 (self, _cmd, &managed_method, "Xamarin.LockScreen.MainLockScreenController, Xamarin.LockScreen, Version=1.0.5320.36486, Culture=neutral, PublicKeyToken=null", ".ctor");
+		return native_to_managed_trampoline_5 (self, _cmd, &managed_method, "Xamarin.LockScreen.MainLockScreenController, Xamarin.LockScreen, Version=1.0.5321.914, Culture=neutral, PublicKeyToken=null", ".ctor");
 	}
 @end
 
@@ -778,37 +778,37 @@ int native_to_managed_trampoline_12 (id self, SEL _cmd, MonoMethod **managed_met
 	-(void) layoutSubviews
 	{
 		static MonoMethod *managed_method = NULL;
-		native_to_managed_trampoline_6 (self, _cmd, &managed_method, "Xamarin.LockScreen.Views.LockButton, Xamarin.LockScreen, Version=1.0.5320.36486, Culture=neutral, PublicKeyToken=null", "LayoutSubviews");
+		native_to_managed_trampoline_6 (self, _cmd, &managed_method, "Xamarin.LockScreen.Views.LockButton, Xamarin.LockScreen, Version=1.0.5321.914, Culture=neutral, PublicKeyToken=null", "LayoutSubviews");
 	}
 
 	-(void) drawRect:(CGRect)p0
 	{
 		static MonoMethod *managed_method = NULL;
-		native_to_managed_trampoline_9 (self, _cmd, &managed_method, p0, "System.Drawing.RectangleF, monotouch, Version=0.0.0.0, Culture=neutral, PublicKeyToken=84e04ff9cfb79065", "Xamarin.LockScreen.Views.LockButton, Xamarin.LockScreen, Version=1.0.5320.36486, Culture=neutral, PublicKeyToken=null", "Draw");
+		native_to_managed_trampoline_9 (self, _cmd, &managed_method, p0, "System.Drawing.RectangleF, monotouch, Version=0.0.0.0, Culture=neutral, PublicKeyToken=84e04ff9cfb79065", "Xamarin.LockScreen.Views.LockButton, Xamarin.LockScreen, Version=1.0.5321.914, Culture=neutral, PublicKeyToken=null", "Draw");
 	}
 
 	-(void) touchesBegan:(id)p0 withEvent:(id)p1
 	{
 		static MonoMethod *managed_method = NULL;
-		native_to_managed_trampoline_10 (self, _cmd, &managed_method, p0, p1, "MonoTouch.Foundation.NSSet, monotouch, Version=0.0.0.0, Culture=neutral, PublicKeyToken=84e04ff9cfb79065", "MonoTouch.UIKit.UIEvent, monotouch, Version=0.0.0.0, Culture=neutral, PublicKeyToken=84e04ff9cfb79065", "Xamarin.LockScreen.Views.LockButton, Xamarin.LockScreen, Version=1.0.5320.36486, Culture=neutral, PublicKeyToken=null", "TouchesBegan");
+		native_to_managed_trampoline_10 (self, _cmd, &managed_method, p0, p1, "MonoTouch.Foundation.NSSet, monotouch, Version=0.0.0.0, Culture=neutral, PublicKeyToken=84e04ff9cfb79065", "MonoTouch.UIKit.UIEvent, monotouch, Version=0.0.0.0, Culture=neutral, PublicKeyToken=84e04ff9cfb79065", "Xamarin.LockScreen.Views.LockButton, Xamarin.LockScreen, Version=1.0.5321.914, Culture=neutral, PublicKeyToken=null", "TouchesBegan");
 	}
 
 	-(void) touchesEnded:(id)p0 withEvent:(id)p1
 	{
 		static MonoMethod *managed_method = NULL;
-		native_to_managed_trampoline_10 (self, _cmd, &managed_method, p0, p1, "MonoTouch.Foundation.NSSet, monotouch, Version=0.0.0.0, Culture=neutral, PublicKeyToken=84e04ff9cfb79065", "MonoTouch.UIKit.UIEvent, monotouch, Version=0.0.0.0, Culture=neutral, PublicKeyToken=84e04ff9cfb79065", "Xamarin.LockScreen.Views.LockButton, Xamarin.LockScreen, Version=1.0.5320.36486, Culture=neutral, PublicKeyToken=null", "TouchesEnded");
+		native_to_managed_trampoline_10 (self, _cmd, &managed_method, p0, p1, "MonoTouch.Foundation.NSSet, monotouch, Version=0.0.0.0, Culture=neutral, PublicKeyToken=84e04ff9cfb79065", "MonoTouch.UIKit.UIEvent, monotouch, Version=0.0.0.0, Culture=neutral, PublicKeyToken=84e04ff9cfb79065", "Xamarin.LockScreen.Views.LockButton, Xamarin.LockScreen, Version=1.0.5321.914, Culture=neutral, PublicKeyToken=null", "TouchesEnded");
 	}
 
 	-(bool) isHighlighted
 	{
 		static MonoMethod *managed_method = NULL;
-		return native_to_managed_trampoline_11 (self, _cmd, &managed_method, "Xamarin.LockScreen.Views.LockButton, Xamarin.LockScreen, Version=1.0.5320.36486, Culture=neutral, PublicKeyToken=null", "get_Highlighted");
+		return native_to_managed_trampoline_11 (self, _cmd, &managed_method, "Xamarin.LockScreen.Views.LockButton, Xamarin.LockScreen, Version=1.0.5321.914, Culture=neutral, PublicKeyToken=null", "get_Highlighted");
 	}
 
 	-(void) setHighlighted:(bool)p0
 	{
 		static MonoMethod *managed_method = NULL;
-		native_to_managed_trampoline_7 (self, _cmd, &managed_method, p0, "System.Boolean, mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e", "Xamarin.LockScreen.Views.LockButton, Xamarin.LockScreen, Version=1.0.5320.36486, Culture=neutral, PublicKeyToken=null", "set_Highlighted");
+		native_to_managed_trampoline_7 (self, _cmd, &managed_method, p0, "System.Boolean, mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e", "Xamarin.LockScreen.Views.LockButton, Xamarin.LockScreen, Version=1.0.5321.914, Culture=neutral, PublicKeyToken=null", "set_Highlighted");
 	}
 
 	-(bool) conformsToProtocol:(void *)p0
@@ -820,7 +820,7 @@ int native_to_managed_trampoline_12 (id self, SEL _cmd, MonoMethod **managed_met
 	-(id) init
 	{
 		static MonoMethod *managed_method = NULL;
-		return native_to_managed_trampoline_5 (self, _cmd, &managed_method, "Xamarin.LockScreen.Views.LockButton, Xamarin.LockScreen, Version=1.0.5320.36486, Culture=neutral, PublicKeyToken=null", ".ctor");
+		return native_to_managed_trampoline_5 (self, _cmd, &managed_method, "Xamarin.LockScreen.Views.LockButton, Xamarin.LockScreen, Version=1.0.5321.914, Culture=neutral, PublicKeyToken=null", ".ctor");
 	}
 @end
 
@@ -858,25 +858,25 @@ int native_to_managed_trampoline_12 (id self, SEL _cmd, MonoMethod **managed_met
 	-(void) viewDidLoad
 	{
 		static MonoMethod *managed_method = NULL;
-		native_to_managed_trampoline_6 (self, _cmd, &managed_method, "Xamarin.LockScreen.BaseLockScreenController, Xamarin.LockScreen, Version=1.0.5320.36486, Culture=neutral, PublicKeyToken=null", "ViewDidLoad");
+		native_to_managed_trampoline_6 (self, _cmd, &managed_method, "Xamarin.LockScreen.BaseLockScreenController, Xamarin.LockScreen, Version=1.0.5321.914, Culture=neutral, PublicKeyToken=null", "ViewDidLoad");
 	}
 
 	-(int) supportedInterfaceOrientations
 	{
 		static MonoMethod *managed_method = NULL;
-		return native_to_managed_trampoline_12 (self, _cmd, &managed_method, "Xamarin.LockScreen.BaseLockScreenController, Xamarin.LockScreen, Version=1.0.5320.36486, Culture=neutral, PublicKeyToken=null", "GetSupportedInterfaceOrientations");
+		return native_to_managed_trampoline_12 (self, _cmd, &managed_method, "Xamarin.LockScreen.BaseLockScreenController, Xamarin.LockScreen, Version=1.0.5321.914, Culture=neutral, PublicKeyToken=null", "GetSupportedInterfaceOrientations");
 	}
 
 	-(int) preferredStatusBarStyle
 	{
 		static MonoMethod *managed_method = NULL;
-		return native_to_managed_trampoline_12 (self, _cmd, &managed_method, "Xamarin.LockScreen.BaseLockScreenController, Xamarin.LockScreen, Version=1.0.5320.36486, Culture=neutral, PublicKeyToken=null", "PreferredStatusBarStyle");
+		return native_to_managed_trampoline_12 (self, _cmd, &managed_method, "Xamarin.LockScreen.BaseLockScreenController, Xamarin.LockScreen, Version=1.0.5321.914, Culture=neutral, PublicKeyToken=null", "PreferredStatusBarStyle");
 	}
 
 	-(void) viewWillAppear:(bool)p0
 	{
 		static MonoMethod *managed_method = NULL;
-		native_to_managed_trampoline_7 (self, _cmd, &managed_method, p0, "System.Boolean, mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e", "Xamarin.LockScreen.BaseLockScreenController, Xamarin.LockScreen, Version=1.0.5320.36486, Culture=neutral, PublicKeyToken=null", "ViewWillAppear");
+		native_to_managed_trampoline_7 (self, _cmd, &managed_method, p0, "System.Boolean, mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e", "Xamarin.LockScreen.BaseLockScreenController, Xamarin.LockScreen, Version=1.0.5321.914, Culture=neutral, PublicKeyToken=null", "ViewWillAppear");
 	}
 
 	-(bool) conformsToProtocol:(void *)p0
@@ -901,7 +901,7 @@ int native_to_managed_trampoline_12 (id self, SEL _cmd, MonoMethod **managed_met
 	-(void) viewDidLoad
 	{
 		static MonoMethod *managed_method = NULL;
-		native_to_managed_trampoline_6 (self, _cmd, &managed_method, "Xamarin.LockScreen.LockScreenSetupController, Xamarin.LockScreen, Version=1.0.5320.36486, Culture=neutral, PublicKeyToken=null", "ViewDidLoad");
+		native_to_managed_trampoline_6 (self, _cmd, &managed_method, "Xamarin.LockScreen.LockScreenSetupController, Xamarin.LockScreen, Version=1.0.5321.914, Culture=neutral, PublicKeyToken=null", "ViewDidLoad");
 	}
 @end
 
@@ -936,7 +936,7 @@ int native_to_managed_trampoline_12 (id self, SEL _cmd, MonoMethod **managed_met
 	-(void) layoutSubviews
 	{
 		static MonoMethod *managed_method = NULL;
-		native_to_managed_trampoline_6 (self, _cmd, &managed_method, "Xamarin.LockScreen.Views.LockScreenView, Xamarin.LockScreen, Version=1.0.5320.36486, Culture=neutral, PublicKeyToken=null", "LayoutSubviews");
+		native_to_managed_trampoline_6 (self, _cmd, &managed_method, "Xamarin.LockScreen.Views.LockScreenView, Xamarin.LockScreen, Version=1.0.5321.914, Culture=neutral, PublicKeyToken=null", "LayoutSubviews");
 	}
 
 	-(bool) conformsToProtocol:(void *)p0
@@ -978,13 +978,13 @@ int native_to_managed_trampoline_12 (id self, SEL _cmd, MonoMethod **managed_met
 	-(void) layoutSubviews
 	{
 		static MonoMethod *managed_method = NULL;
-		native_to_managed_trampoline_6 (self, _cmd, &managed_method, "Xamarin.LockScreen.Views.PinSelectionView, Xamarin.LockScreen, Version=1.0.5320.36486, Culture=neutral, PublicKeyToken=null", "LayoutSubviews");
+		native_to_managed_trampoline_6 (self, _cmd, &managed_method, "Xamarin.LockScreen.Views.PinSelectionView, Xamarin.LockScreen, Version=1.0.5321.914, Culture=neutral, PublicKeyToken=null", "LayoutSubviews");
 	}
 
 	-(void) drawRect:(CGRect)p0
 	{
 		static MonoMethod *managed_method = NULL;
-		native_to_managed_trampoline_9 (self, _cmd, &managed_method, p0, "System.Drawing.RectangleF, monotouch, Version=0.0.0.0, Culture=neutral, PublicKeyToken=84e04ff9cfb79065", "Xamarin.LockScreen.Views.PinSelectionView, Xamarin.LockScreen, Version=1.0.5320.36486, Culture=neutral, PublicKeyToken=null", "Draw");
+		native_to_managed_trampoline_9 (self, _cmd, &managed_method, p0, "System.Drawing.RectangleF, monotouch, Version=0.0.0.0, Culture=neutral, PublicKeyToken=84e04ff9cfb79065", "Xamarin.LockScreen.Views.PinSelectionView, Xamarin.LockScreen, Version=1.0.5321.914, Culture=neutral, PublicKeyToken=null", "Draw");
 	}
 
 	-(bool) conformsToProtocol:(void *)p0
@@ -999,7 +999,7 @@ int native_to_managed_trampoline_12 (id self, SEL _cmd, MonoMethod **managed_met
 		{"AppDelegate", "Example.AppDelegate, Example, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null", NULL },
 		{"UIResponder", "MonoTouch.UIKit.UIResponder, monotouch, Version=0.0.0.0, Culture=neutral, PublicKeyToken=84e04ff9cfb79065", NULL },
 		{"UIViewController", "MonoTouch.UIKit.UIViewController, monotouch, Version=0.0.0.0, Culture=neutral, PublicKeyToken=84e04ff9cfb79065", NULL },
-		{"MainLockScreenController", "Xamarin.LockScreen.MainLockScreenController, Xamarin.LockScreen, Version=1.0.5320.36486, Culture=neutral, PublicKeyToken=null", NULL },
+		{"MainLockScreenController", "Xamarin.LockScreen.MainLockScreenController, Xamarin.LockScreen, Version=1.0.5321.914, Culture=neutral, PublicKeyToken=null", NULL },
 		{"ExampleViewController", "Example.ExampleViewController, Example, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null", NULL },
 		{"CAAnimation", "MonoTouch.CoreAnimation.CAAnimation, monotouch, Version=0.0.0.0, Culture=neutral, PublicKeyToken=84e04ff9cfb79065", NULL },
 		{"CALayer", "MonoTouch.CoreAnimation.CALayer, monotouch, Version=0.0.0.0, Culture=neutral, PublicKeyToken=84e04ff9cfb79065", NULL },
@@ -1038,12 +1038,12 @@ int native_to_managed_trampoline_12 (id self, SEL _cmd, MonoMethod **managed_met
 		{"NSMutableDictionary", "MonoTouch.Foundation.NSMutableDictionary, monotouch, Version=0.0.0.0, Culture=neutral, PublicKeyToken=84e04ff9cfb79065", NULL },
 		{"NSSet", "MonoTouch.Foundation.NSSet, monotouch, Version=0.0.0.0, Culture=neutral, PublicKeyToken=84e04ff9cfb79065", NULL },
 		{"__NSObject_Disposer", "MonoTouch.Foundation.NSObject+NSObject_Disposer, monotouch, Version=0.0.0.0, Culture=neutral, PublicKeyToken=84e04ff9cfb79065", NULL },
-		{"Xamarin_LockScreen_Views_LockButton", "Xamarin.LockScreen.Views.LockButton, Xamarin.LockScreen, Version=1.0.5320.36486, Culture=neutral, PublicKeyToken=null", NULL },
-		{"Xamarin_LockScreen_BaseLockScreenController", "Xamarin.LockScreen.BaseLockScreenController, Xamarin.LockScreen, Version=1.0.5320.36486, Culture=neutral, PublicKeyToken=null", NULL },
-		{"LockScreenController", "Xamarin.LockScreen.LockScreenController, Xamarin.LockScreen, Version=1.0.5320.36486, Culture=neutral, PublicKeyToken=null", NULL },
-		{"LockScreenSetupController", "Xamarin.LockScreen.LockScreenSetupController, Xamarin.LockScreen, Version=1.0.5320.36486, Culture=neutral, PublicKeyToken=null", NULL },
-		{"Xamarin_LockScreen_Views_LockScreenView", "Xamarin.LockScreen.Views.LockScreenView, Xamarin.LockScreen, Version=1.0.5320.36486, Culture=neutral, PublicKeyToken=null", NULL },
-		{"Xamarin_LockScreen_Views_PinSelectionView", "Xamarin.LockScreen.Views.PinSelectionView, Xamarin.LockScreen, Version=1.0.5320.36486, Culture=neutral, PublicKeyToken=null", NULL },
+		{"Xamarin_LockScreen_Views_LockButton", "Xamarin.LockScreen.Views.LockButton, Xamarin.LockScreen, Version=1.0.5321.914, Culture=neutral, PublicKeyToken=null", NULL },
+		{"Xamarin_LockScreen_BaseLockScreenController", "Xamarin.LockScreen.BaseLockScreenController, Xamarin.LockScreen, Version=1.0.5321.914, Culture=neutral, PublicKeyToken=null", NULL },
+		{"LockScreenController", "Xamarin.LockScreen.LockScreenController, Xamarin.LockScreen, Version=1.0.5321.914, Culture=neutral, PublicKeyToken=null", NULL },
+		{"LockScreenSetupController", "Xamarin.LockScreen.LockScreenSetupController, Xamarin.LockScreen, Version=1.0.5321.914, Culture=neutral, PublicKeyToken=null", NULL },
+		{"Xamarin_LockScreen_Views_LockScreenView", "Xamarin.LockScreen.Views.LockScreenView, Xamarin.LockScreen, Version=1.0.5321.914, Culture=neutral, PublicKeyToken=null", NULL },
+		{"Xamarin_LockScreen_Views_PinSelectionView", "Xamarin.LockScreen.Views.PinSelectionView, Xamarin.LockScreen, Version=1.0.5321.914, Culture=neutral, PublicKeyToken=null", NULL },
 		{ NULL, NULL, NULL },
 	};
 

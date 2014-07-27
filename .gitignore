@@ -1,4 +1,10 @@
 #build objects
-*.exe
-*.dll
-[Bb]in
+Example/[Bb]in/
+Example/[Oo]bj/
+Example/[Dd]ebug/
+Example/[Rr]ealease/
+
+Xamarin.Locker/[Bb]in/
+Xamarin.Locker/[Oo]bj/
+Xamarin.Locker/[Dd]ebug/
+Xamarin.Locker/[Rr]ealease/
